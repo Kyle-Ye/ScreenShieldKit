@@ -45,6 +45,8 @@ view.hideFromCapture(hidden: true)
 view.hideFromCapture(hidden: false)
 ```
 
+Detailed documentation for ScreenShieldKit can be found on the [Swift Package Index](https://swiftpackageindex.com/Kyle-Ye/ScreenShieldKit/main/documentation/screenshieldkit).
+
 ## License
 
 See LICENSE file - MIT
