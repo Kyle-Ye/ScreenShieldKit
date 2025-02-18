@@ -1,0 +1,41 @@
+name: iOS UI Tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    name: ${{ matrix.config.name }}
+    runs-on: ${{ matrix.config.runs-on }}
+    strategy:
+      matrix:
+        config:
+          - name: 'iOS 16.4 and 17.2 with Xcode 15.2 on macOS 13'
+            runs-on: macos-13
+            xcode: '15.2'
+            destinations: |
+              platform=iOS Simulator,name=iPhone 14 Pro,OS=16.4
+              platform=iOS Simulator,name=iPhone 15 Pro,OS=17.2
+          - name: 'iOS 17.5 and 18.1 with Xcode 15.4 on macOS 14'
+            runs-on: macos-14
+            xcode: '15.4'
+            destinations: |
+              platform=iOS Simulator,name=iPhone 15 Pro,OS=17.5
+              platform=iOS Simulator,name=iPhone 16 Pro,OS=18.1
+    steps:
+      - uses: actions/checkout@v4
+      - name: Select Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: ${{ matrix.config.xcode }}
+      - name: iOS Tests
+        run: |
+          while IFS= read -r destination; do
+            echo "Testing on $destination"
+            xcodebuild test \
+              -scheme 'TestingHostUITests' \
+              -destination "$destination"
+          done <<< "${{ matrix.config.destinations }}"
