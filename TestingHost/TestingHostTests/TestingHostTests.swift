@@ -6,7 +6,7 @@
 //
 
 import Testing
-import CaptureHider
+import ScreenShieldKit
 import UIKit
 
 @MainActor

@@ -5,7 +5,7 @@
 //  Created by Kyle on 2025/2/17.
 //
 
-import CaptureHider
+import ScreenShieldKit
 import iOSSnapshotTestCase
 import UIKit
 import XCTest

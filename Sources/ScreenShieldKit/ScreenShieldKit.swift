@@ -1,6 +1,6 @@
 //
-//  CaptureHider.swift
-//  CaptureHider
+//  ScreenShieldKit.swift
+//  ScreenShieldKit
 //
 //  Created by Kyle on 2025/02/17.
 //  Creadit: https://nsantoine.dev/posts/CALayerCaptureHiding
@@ -14,7 +14,7 @@ import AppKit
 #endif
 import os.log
 
-let logger = OSLog(subsystem: "top.kyleye.capturehider", category: "CaptureHider")
+let logger = OSLog(subsystem: "top.kyleye.screenshieldkit", category: "ScreenShieldKit")
 
 extension CALayer {
     // hides view/layer when:

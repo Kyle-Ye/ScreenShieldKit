@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import CaptureHider
+import ScreenShieldKit
 
 class ViewController: UIViewController {
     override func viewDidLoad() {

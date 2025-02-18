@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2769E78C2D64564D00785082 /* CaptureHider in Frameworks */ = {isa = PBXBuildFile; productRef = 2769E78B2D64564D00785082 /* CaptureHider */; };
+		2769E78C2D64564D00785082 /* ScreenShieldKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2769E78B2D64564D00785082 /* ScreenShieldKit */; };
 		2769E78F2D64565800785082 /* iOSSnapshotTestCase in Frameworks */ = {isa = PBXBuildFile; productRef = 2769E78E2D64565800785082 /* iOSSnapshotTestCase */; };
-		2769E7BC2D6456C300785082 /* CaptureHider in Frameworks */ = {isa = PBXBuildFile; productRef = 2769E7BB2D6456C300785082 /* CaptureHider */; };
-		2769E7BE2D6456C600785082 /* CaptureHider in Frameworks */ = {isa = PBXBuildFile; productRef = 2769E7BD2D6456C600785082 /* CaptureHider */; };
+		2769E7BC2D6456C300785082 /* ScreenShieldKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2769E7BB2D6456C300785082 /* ScreenShieldKit */; };
+		2769E7BE2D6456C600785082 /* ScreenShieldKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2769E7BD2D6456C600785082 /* ScreenShieldKit */; };
 		2769E7C22D64581500785082 /* iOSSnapshotTestCase in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 2769E78E2D64565800785082 /* iOSSnapshotTestCase */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
 
@@ -97,7 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2769E78C2D64564D00785082 /* CaptureHider in Frameworks */,
+				2769E78C2D64564D00785082 /* ScreenShieldKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,7 +105,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2769E7BC2D6456C300785082 /* CaptureHider in Frameworks */,
+				2769E7BC2D6456C300785082 /* ScreenShieldKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,7 +113,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2769E7BE2D6456C600785082 /* CaptureHider in Frameworks */,
+				2769E7BE2D6456C600785082 /* ScreenShieldKit in Frameworks */,
 				2769E78F2D64565800785082 /* iOSSnapshotTestCase in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -171,7 +171,7 @@
 			);
 			name = TestingHost;
 			packageProductDependencies = (
-				2769E78B2D64564D00785082 /* CaptureHider */,
+				2769E78B2D64564D00785082 /* ScreenShieldKit */,
 			);
 			productName = TestingHost;
 			productReference = 2769E7522D64560000785082 /* TestingHost.app */;
@@ -195,7 +195,7 @@
 			);
 			name = TestingHostTests;
 			packageProductDependencies = (
-				2769E7BB2D6456C300785082 /* CaptureHider */,
+				2769E7BB2D6456C300785082 /* ScreenShieldKit */,
 			);
 			productName = TestingHostTests;
 			productReference = 2769E7682D64560100785082 /* TestingHostTests.xctest */;
@@ -221,7 +221,7 @@
 			name = TestingHostUITests;
 			packageProductDependencies = (
 				2769E78E2D64565800785082 /* iOSSnapshotTestCase */,
-				2769E7BD2D6456C600785082 /* CaptureHider */,
+				2769E7BD2D6456C600785082 /* ScreenShieldKit */,
 			);
 			productName = TestingHostUITests;
 			productReference = 2769E7722D64560100785082 /* TestingHostUITests.xctest */;
@@ -261,7 +261,7 @@
 			mainGroup = 2769E7492D64560000785082;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				2769E78A2D64564D00785082 /* XCLocalSwiftPackageReference "../../CaptureHider" */,
+				2769E78A2D64564D00785082 /* XCLocalSwiftPackageReference "../../ScreenShieldKit" */,
 				2769E78D2D64565800785082 /* XCRemoteSwiftPackageReference "ios-snapshot-test-case" */,
 			);
 			preferredProjectObjectVersion = 77;
@@ -362,7 +362,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = top.kyleye.capturehider.TestingHost;
+				PRODUCT_BUNDLE_IDENTIFIER = top.kyleye.screenshieldkit.TestingHost;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -398,7 +398,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = top.kyleye.capturehider.TestingHost;
+				PRODUCT_BUNDLE_IDENTIFIER = top.kyleye.screenshieldkit.TestingHost;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -539,7 +539,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = top.kyleye.capturehider.TestingHostTests;
+				PRODUCT_BUNDLE_IDENTIFIER = top.kyleye.screenshieldkit.TestingHostTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -562,7 +562,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = top.kyleye.capturehider.TestingHostTests;
+				PRODUCT_BUNDLE_IDENTIFIER = top.kyleye.screenshieldkit.TestingHostTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -585,7 +585,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = top.kyleye.capturehider.TestingHostUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = top.kyleye.screenshieldkit.TestingHostUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -610,7 +610,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = top.kyleye.capturehider.TestingHostUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = top.kyleye.screenshieldkit.TestingHostUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -666,9 +666,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		2769E78A2D64564D00785082 /* XCLocalSwiftPackageReference "../../CaptureHider" */ = {
+		2769E78A2D64564D00785082 /* XCLocalSwiftPackageReference "../../ScreenShieldKit" */ = {
 			isa = XCLocalSwiftPackageReference;
-			relativePath = ../../CaptureHider;
+			relativePath = ../../ScreenShieldKit;
 		};
 /* End XCLocalSwiftPackageReference section */
 
@@ -684,24 +684,24 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		2769E78B2D64564D00785082 /* CaptureHider */ = {
+		2769E78B2D64564D00785082 /* ScreenShieldKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = CaptureHider;
+			productName = ScreenShieldKit;
 		};
 		2769E78E2D64565800785082 /* iOSSnapshotTestCase */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 2769E78D2D64565800785082 /* XCRemoteSwiftPackageReference "ios-snapshot-test-case" */;
 			productName = iOSSnapshotTestCase;
 		};
-		2769E7BB2D6456C300785082 /* CaptureHider */ = {
+		2769E7BB2D6456C300785082 /* ScreenShieldKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 2769E78A2D64564D00785082 /* XCLocalSwiftPackageReference "../../CaptureHider" */;
-			productName = CaptureHider;
+			package = 2769E78A2D64564D00785082 /* XCLocalSwiftPackageReference "../../ScreenShieldKit" */;
+			productName = ScreenShieldKit;
 		};
-		2769E7BD2D6456C600785082 /* CaptureHider */ = {
+		2769E7BD2D6456C600785082 /* ScreenShieldKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 2769E78A2D64564D00785082 /* XCLocalSwiftPackageReference "../../CaptureHider" */;
-			productName = CaptureHider;
+			package = 2769E78A2D64564D00785082 /* XCLocalSwiftPackageReference "../../ScreenShieldKit" */;
+			productName = ScreenShieldKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

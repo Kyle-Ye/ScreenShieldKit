@@ -1,4 +1,4 @@
-# CaptureHider
+# ScreenShieldKit
 
 A swift framework to hide a UIView from being captured when screenshot is taken.
 
@@ -6,14 +6,14 @@ A swift framework to hide a UIView from being captured when screenshot is taken.
 
 | **Workflow** | **Status** |
 |-|:-|
-| **iOS UI Tests** | [![iOS UI Tests](https://github.com/Kyle-Ye/CaptureHider/actions/workflows/ios.yml/badge.svg)](https://github.com/Kyle-Ye/CaptureHider/actions/workflows/ios.yml) |
+| **iOS UI Tests** | [![iOS UI Tests](https://github.com/Kyle-Ye/ScreenShieldKit/actions/workflows/ios.yml/badge.svg)](https://github.com/Kyle-Ye/ScreenShieldKit/actions/workflows/ios.yml) |
 
 ## Getting Started
 
 In your `Package.swift` file, add the following dependency to your `dependencies` argument:
 
 ```swift
-.package(url: "https://github.com/Kyle-Ye/CaptureHider.git", from: "0.1.0"),
+.package(url: "https://github.com/Kyle-Ye/ScreenShieldKit.git", from: "0.1.0"),
 ```
 
 Then add the dependency to any targets you've declared in your manifest:
@@ -22,7 +22,7 @@ Then add the dependency to any targets you've declared in your manifest:
 .target(
     name: "MyTarget", 
     dependencies: [
-        .product(name: "CaptureHider", package: "CaptureHider"),
+        .product(name: "ScreenShieldKit", package: "ScreenShieldKit"),
     ]
 ),
 ```
