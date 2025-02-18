@@ -24,10 +24,6 @@ extension CALayer {
     // or can be from another source, like recording the screen from a mac on QuickTime
     @discardableResult
     public func hideFromCapture(hide: Bool = true) -> Bool {
-        #if targetEnvironment(simulator)
-        os_log(.info, log: logger, "Not supported on Simulator environment")
-        return false
-        #else
         let propertyBase64 = "ZGlzYWJsZVVwZGF0ZU1hc2s=" /* "disableUpdateMask" encoded in base64 */
         guard let propertyData = Data(base64Encoded: propertyBase64),
               let propertyString = String(data: propertyData, encoding: .utf8) else {
@@ -45,7 +41,6 @@ extension CALayer {
             setValue(NSNumber(value: 0), forKey: propertyString)
         }
         return true
-        #endif
     }
 }
 
