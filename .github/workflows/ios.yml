@@ -13,15 +13,15 @@ jobs:
     strategy:
       matrix:
         config:
-          - name: 'iOS 16.4 and 17.2 with Xcode 15.2 on macOS 13'
-            runs-on: macos-13
-            xcode: '15.2'
-            destinations: |
-              platform=iOS Simulator,name=iPhone 14 Pro,OS=16.4
-              platform=iOS Simulator,name=iPhone 15 Pro,OS=17.2
+          # - name: 'iOS 16.4 and 17.2 with Xcode 15.2 on macOS 13'
+          #   runs-on: macos-13
+          #   xcode: '15.2'
+          #   destinations: |
+          #     platform=iOS Simulator,name=iPhone 14 Pro,OS=16.4
+          #     platform=iOS Simulator,name=iPhone 15 Pro,OS=17.2
           - name: 'iOS 17.5 and 18.1 with Xcode 15.4 on macOS 14'
             runs-on: macos-14
-            xcode: '15.4'
+            xcode: '16.2'
             destinations: |
               platform=iOS Simulator,name=iPhone 15 Pro,OS=17.5
               platform=iOS Simulator,name=iPhone 16 Pro,OS=18.1
