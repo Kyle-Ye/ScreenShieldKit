@@ -1,0 +1,47 @@
+{
+  "configurations" : [
+    {
+      "id" : "2E017C09-C5B8-4F83-9A29-59E26CB27D74",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "environmentVariableEntries" : [
+      {
+        "key" : "FB_REFERENCE_IMAGE_DIR",
+        "value" : "$(SOURCE_ROOT)\/Images\/ReferenceImages"
+      },
+      {
+        "key" : "IMAGE_DIFF_DIR",
+        "value" : "$(SOURCE_ROOT)\/Images\/FailedSnapshotImages"
+      }
+    ],
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:TestingHost.xcodeproj",
+      "identifier" : "2769E7512D64560000785082",
+      "name" : "TestingHost"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:TestingHost.xcodeproj",
+        "identifier" : "2769E7672D64560100785082",
+        "name" : "TestingHostTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:TestingHost.xcodeproj",
+        "identifier" : "2769E7712D64560100785082",
+        "name" : "TestingHostUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

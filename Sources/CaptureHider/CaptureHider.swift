@@ -23,7 +23,7 @@ extension CALayer {
     // the screen recording can either be on-device, like from the Control Center
     // or can be from another source, like recording the screen from a mac on QuickTime
     @discardableResult
-    public func hideViewFromCapture(hide: Bool) -> Bool {
+    public func hideFromCapture(hide: Bool = true) -> Bool {
         #if targetEnvironment(simulator)
         os_log(.info, log: logger, "Not supported on Simulator environment")
         return false
@@ -52,20 +52,20 @@ extension CALayer {
 #if canImport(UIKit)
 extension UIView {
     @discardableResult
-    public func hideViewFromCapture(hide: Bool = true) -> Bool {
-        layer.hideViewFromCapture(hide: hide)
+    public func hideFromCapture(hide: Bool = true) -> Bool {
+        layer.hideFromCapture(hide: hide)
     }
 }
 #elseif canImport(AppKit)
 extension NSView {
     // FIXME: Not work for macOS currently
     @discardableResult
-    public func hideViewFromCapture(hide: Bool = true) -> Bool {
+    public func hideFromCapture(hide: Bool = true) -> Bool {
         guard let layer else {
             os_log(.error, log: logger, "NSView is not backed by CALayer")
             return false
         }
-        return layer.hideViewFromCapture(hide: hide)
+        return layer.hideFromCapture(hide: hide)
     }
 }
 #endif
