@@ -32,6 +32,7 @@ jobs:
         with:
           xcode-version: ${{ matrix.config.xcode }}
       - name: iOS Tests
+        working-directory: TestingHost
         run: |
           while IFS= read -r destination; do
             echo "Testing on $destination"
