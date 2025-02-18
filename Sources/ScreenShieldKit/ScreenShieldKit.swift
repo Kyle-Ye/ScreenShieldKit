@@ -17,11 +17,20 @@ import os.log
 let logger = OSLog(subsystem: "top.kyleye.screenshieldkit", category: "ScreenShieldKit")
 
 extension CALayer {
-    // hides view/layer when:
-    // 1) a screenshot is taken
-    // 2) a screen recording is happening
-    // the screen recording can either be on-device, like from the Control Center
-    // or can be from another source, like recording the screen from a mac on QuickTime
+    /// Configures the layer's visibility in screen captures and recordings.
+    ///
+    /// This method allows you to control whether the layer's content appears in screen recordings,
+    /// screen captures, and other screen sharing scenarios. When hidden, the layer's content will
+    /// be replaced with a placeholder or appear blank in captures.
+    ///
+    /// - Parameter hide: A boolean value that determines whether to hide the content from screen captures.
+    ///                   Set to `true` to hide content, `false` to show content. Defaults to `true`.
+    ///
+    /// - Returns: A boolean value indicating whether the operation was successful.
+    ///           Returns `true` if the visibility was successfully configured, `false` if there was an error.
+    ///
+    /// - Note: This method uses private iOS APIs and may need to be updated if the underlying implementation changes.
+    ///
     @discardableResult
     public func hideFromCapture(hide: Bool = true) -> Bool {
         let propertyBase64 = "ZGlzYWJsZVVwZGF0ZU1hc2s=" /* "disableUpdateMask" encoded in base64 */
@@ -46,6 +55,20 @@ extension CALayer {
 
 #if canImport(UIKit)
 extension UIView {
+    /// Configures the view's visibility in screen captures and recordings.
+    ///
+    /// This method allows you to control whether the view's content appears in screen recordings,
+    /// screen captures, and other screen sharing scenarios. When hidden, the view's content will
+    /// be replaced with a placeholder or appear blank in captures.
+    ///
+    /// - Parameter hide: A boolean value that determines whether to hide the content from screen captures.
+    ///                   Set to `true` to hide content, `false` to show content. Defaults to `true`.
+    ///
+    /// - Returns: A boolean value indicating whether the operation was successful.
+    ///           Returns `true` if the visibility was successfully configured, `false` if there was an error.
+    ///
+    /// - Note: This method uses private iOS APIs and may need to be updated if the underlying implementation changes.
+    ///
     @discardableResult
     public func hideFromCapture(hide: Bool = true) -> Bool {
         layer.hideFromCapture(hide: hide)
@@ -53,7 +76,20 @@ extension UIView {
 }
 #elseif canImport(AppKit)
 extension NSView {
-    // FIXME: Not work for macOS currently
+    /// Configures the view's visibility in screen captures and recordings.
+    ///
+    /// This method allows you to control whether the view's content appears in screen recordings,
+    /// screen captures, and other screen sharing scenarios. When hidden, the view's content will
+    /// be replaced with a placeholder or appear blank in captures.
+    ///
+    /// - Parameter hide: A boolean value that determines whether to hide the content from screen captures.
+    ///                   Set to `true` to hide content, `false` to show content. Defaults to `true`.
+    ///
+    /// - Returns: A boolean value indicating whether the operation was successful.
+    ///           Returns `true` if the visibility was successfully configured, `false` if there was an error.
+    ///
+    /// - Note: This method uses private macOS APIs and may need to be updated if the underlying implementation changes.
+    ///
     @discardableResult
     public func hideFromCapture(hide: Bool = true) -> Bool {
         guard let layer else {
