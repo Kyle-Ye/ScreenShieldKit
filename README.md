@@ -29,6 +29,22 @@ Then add the dependency to any targets you've declared in your manifest:
 ),
 ```
 
+## Usage
+
+Instead of wrapping your view in a secure UITextField or [ScreenShieldView](https://github.com/RyukieSama/Swifty),
+
+you can just directly call the `hideFromCapture(hidden:)` API on your view or layer.
+
+```swift
+import ScreenShieldKit
+
+let view = UIView(frame: .zero)
+view.hideFromCapture(hidden: true)
+
+// Resture the behavior
+view.hideFromCapture(hidden: false)
+```
+
 ## License
 
 See LICENSE file - MIT
