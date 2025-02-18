@@ -1,6 +1,6 @@
 # ScreenShieldKit
 
-A swift framework to hide a UIView from being captured when screenshot is taken.
+A Swift framework to hide UIView/NSView/CALayer from being captured when taking screenshots.
 
 ## Overview
 
