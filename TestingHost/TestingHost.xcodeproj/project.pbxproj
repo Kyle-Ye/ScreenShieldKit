@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 77;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -52,7 +52,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		2769E77A2D64560100785082 /* Exceptions for "TestingHost" folder in "TestingHost" target */ = {
+		2769E77A2D64560100785082 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
@@ -62,34 +62,11 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		2769E7542D64560000785082 /* TestingHost */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				2769E77A2D64560100785082 /* Exceptions for "TestingHost" folder in "TestingHost" target */,
-			);
-			path = TestingHost;
-			sourceTree = "<group>";
-		};
-		2769E76B2D64560100785082 /* TestingHostTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = TestingHostTests;
-			sourceTree = "<group>";
-		};
-		2769E7752D64560100785082 /* TestingHostUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = TestingHostUITests;
-			sourceTree = "<group>";
-		};
-		2769E7C12D6457B500785082 /* TestPlans */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = TestPlans;
-			sourceTree = "<group>";
-		};
-		2769E7CD2D6459F900785082 /* Images */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Images;
-			sourceTree = "<group>";
-		};
+		2769E7542D64560000785082 /* TestingHost */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (2769E77A2D64560100785082 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = TestingHost; sourceTree = "<group>"; };
+		2769E76B2D64560100785082 /* TestingHostTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = TestingHostTests; sourceTree = "<group>"; };
+		2769E7752D64560100785082 /* TestingHostUITests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = TestingHostUITests; sourceTree = "<group>"; };
+		2769E7C12D6457B500785082 /* TestPlans */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = TestPlans; sourceTree = "<group>"; };
+		2769E7CD2D6459F900785082 /* Images */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Images; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -252,6 +229,7 @@
 				};
 			};
 			buildConfigurationList = 2769E74D2D64560000785082 /* Build configuration list for PBXProject "TestingHost" */;
+			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -264,7 +242,6 @@
 				2769E78A2D64564D00785082 /* XCLocalSwiftPackageReference "../../ScreenShieldKit" */,
 				2769E78D2D64565800785082 /* XCRemoteSwiftPackageReference "ios-snapshot-test-case" */,
 			);
-			preferredProjectObjectVersion = 77;
 			productRefGroup = 2769E7532D64560000785082 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
