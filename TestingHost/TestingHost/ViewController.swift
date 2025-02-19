@@ -43,6 +43,7 @@ class ViewController: UIViewController {
     override func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         if motion == .motionShake {
             hideFromCaptureSwitch.isOn.toggle()
+            hideFromCaptureSwitch.sendActions(for: .valueChanged)
         }
     }
 }
