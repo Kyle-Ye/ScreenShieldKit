@@ -9,13 +9,29 @@ import UIKit
 import ScreenShieldKit
 
 class ViewController: UIViewController {
+    let hideSubViewSwitch = UISwitch()
+    var subview = UIView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         view.backgroundColor = .red
-
-        let subview = UIView(frame: view.bounds)
-        view.addSubview(subview)
         subview.backgroundColor = .blue
+        hideSubViewSwitch.backgroundColor = .darkGray
+        hideSubViewSwitch.layer.cornerRadius = hideSubViewSwitch.frame.height / 2
+        
+        view.addSubview(subview)
+        view.addSubview(hideSubViewSwitch)
+        
+        subview.frame = view.frame
+        hideSubViewSwitch.center = view.center
+        
+        hideSubViewSwitch.addTarget(self, action: #selector(toggleHideFromCapture),
+                                    for: .valueChanged)
+    }
+    
+    @objc func toggleHideFromCapture() {
+        subview.hideFromCapture(hide: hideSubViewSwitch.isOn)
     }
 
     override var prefersStatusBarHidden: Bool { true }
