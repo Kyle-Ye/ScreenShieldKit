@@ -44,43 +44,47 @@ final class TestingHostUITests: FBSnapshotTestCase {
         let controller = FBSnapshotTestController(test: TestingHostUITests.self)
         controller.referenceImagesDirectory = getReferenceImageDirectory(withDefault: nil)
         controller.imageDiffDirectory = getImageDiffDirectory(withDefault: nil)
-        do {
-            let screenshot = XCUIScreen.main.screenshot()
-            let image = screenshot.image
 
-            let render = UIGraphicsImageRenderer(bounds: CGRect(origin: .zero, size: image.size))
-            let referenceImage = render.image { context in
-                UIColor.blue.setFill()
-                context.fill(render.format.bounds)
-            }
+        func assertScreenshot(color: UIColor) {
             do {
-                try controller.compareReferenceImage(referenceImage, to: image, overallTolerance: 0.0)
+                let screenshot = XCUIScreen.main.screenshot()
+                let image = screenshot.image
+
+                let render = UIGraphicsImageRenderer(bounds: CGRect(origin: .zero, size: image.size))
+                let referenceImage = render.image { context in
+                    color.setFill()
+                    context.fill(render.format.bounds)
+                }
+                do {
+                    try controller.compareReferenceImage(referenceImage, to: image, overallTolerance: 0.0)
+                } catch {
+                    XCTFail(error.localizedDescription)
+                    try controller.saveFailedReferenceImage(referenceImage, test: image, selector: invocation!.selector, identifier: nil)
+                }
             } catch {
                 XCTFail(error.localizedDescription)
-                try controller.saveFailedReferenceImage(referenceImage, test: image, selector: invocation!.selector, identifier: nil)
             }
-        } catch {
-            XCTFail(error.localizedDescription)
         }
+
+        assertScreenshot(color: .blue)
+
         SimulatorShaker.performShake()
         sleep(2) // Sleep some time to wait for the host app handle shake event
-        do {
-            let screenshot = XCUIScreen.main.screenshot()
-            let image = screenshot.image
+        assertScreenshot(color: .red)
 
-            let render = UIGraphicsImageRenderer(bounds: CGRect(origin: .zero, size: image.size))
-            let referenceImage = render.image { context in
-                UIColor.red.setFill()
-                context.fill(render.format.bounds)
-            }
-            do {
-                try controller.compareReferenceImage(referenceImage, to: image, overallTolerance: 0.0)
-            } catch {
-                XCTFail(error.localizedDescription)
-                try controller.saveFailedReferenceImage(referenceImage, test: image, selector: invocation!.selector, identifier: nil)
-            }
-        } catch {
-            XCTFail(error.localizedDescription)
-        }
+        SimulatorShaker.performShake()
+        sleep(2) // Sleep some time to wait for the host app handle shake event
+        assertScreenshot(color: .blue)
+
+        let toggle = app.switches.element
+        toggle.tap()
+        sleep(5) // Sleep some time to wait for the home indicator to be hidden when screenshot is taken
+        assertScreenshot(color: .red)
+
+        toggle.tap()
+        sleep(5) // Sleep some time to wait for the home indicator to be hidden when screenshot is taken
+        assertScreenshot(color: .blue)
+
+
     }
 }
