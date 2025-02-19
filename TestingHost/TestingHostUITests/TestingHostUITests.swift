@@ -82,7 +82,7 @@ final class TestingHostUITests: FBSnapshotTestCase {
         assertScreenshot(color: .red)
 
         toggle.tap()
-        sleep(5) // Sleep some time to wait for the host app handle shake event
+        sleep(5) // Sleep some time to wait for the home indicator to be hidden when screenshot is taken
         assertScreenshot(color: .blue)
 
 
