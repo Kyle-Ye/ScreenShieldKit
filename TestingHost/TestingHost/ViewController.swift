@@ -19,6 +19,7 @@ class ViewController: UIViewController {
         subview.backgroundColor = .blue
         hideSubViewSwitch.backgroundColor = .darkGray
         hideSubViewSwitch.layer.cornerRadius = hideSubViewSwitch.frame.height / 2
+        hideSubViewSwitch.hideFromCapture(hide: true)
         
         view.addSubview(subview)
         view.addSubview(hideSubViewSwitch)
