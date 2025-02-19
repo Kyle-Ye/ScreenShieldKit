@@ -10,7 +10,7 @@ A Swift framework to hide UIView/NSView/CALayer from being captured when taking 
 |-|:-|
 | **iOS UI Tests** | [![iOS UI Tests](https://github.com/Kyle-Ye/ScreenShieldKit/actions/workflows/ios.yml/badge.svg)](https://github.com/Kyle-Ye/ScreenShieldKit/actions/workflows/ios.yml) |
 
-![Demo](Resources/preview.gif)
+![Demo](Resources/preview.png)
 
 ## Getting Started
 
