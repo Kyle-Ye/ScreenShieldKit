@@ -5,17 +5,24 @@
 //  Created by Kyle on 2025/02/17.
 //  Creadit: https://nsantoine.dev/posts/CALayerCaptureHiding
 
+import Foundation
+import os.log
+
+#if canImport(AppKit) && !targetEnvironment(macCatalyst)
+import AppKit
+#endif
+
+#if canImport(QuartzCore)
+import QuartzCore
+#endif
+
 #if canImport(UIKit)
 import UIKit
-#elseif canImport(AppKit)
-import AppKit
-#else
-#error("Unsupported platform")
 #endif
-import os.log
 
 let logger = OSLog(subsystem: "top.kyleye.screenshieldkit", category: "ScreenShieldKit")
 
+#if canImport(QuartzCore)
 extension CALayer {
     /// Configures the layer's visibility in screen captures and recordings.
     ///
@@ -52,6 +59,7 @@ extension CALayer {
         return true
     }
 }
+#endif
 
 #if canImport(UIKit)
 extension UIView {
@@ -74,7 +82,9 @@ extension UIView {
         layer.hideFromCapture(hide: hide)
     }
 }
-#elseif canImport(AppKit)
+#endif
+
+#if canImport(AppKit) && !targetEnvironment(macCatalyst)
 extension NSView {
     /// Configures the view's visibility in screen captures and recordings.
     ///

@@ -2,7 +2,7 @@
 
 [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FKyle-Ye%2FScreenShieldKit%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/Kyle-Ye/ScreenShieldKit) [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FKyle-Ye%2FScreenShieldKit%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/Kyle-Ye/ScreenShieldKit)
 
-A Swift framework to hide UIView/NSView/CALayer from being captured when taking screenshots.
+A Swift framework to hide UIView/NSView/CALayer, and SwiftUI views on iOS 18 and newer, from being captured when taking screenshots.
 
 ## Overview
 
@@ -35,16 +35,36 @@ Then add the dependency to any targets you've declared in your manifest:
 
 Instead of wrapping your view in a secure UITextField or [ScreenShieldView](https://github.com/RyukieSama/Swifty),
 
-you can just directly call the `hideFromCapture(hidden:)` API on your view or layer.
+you can just directly call the `hideFromCapture(hide:)` API on your view or layer.
 
 ```swift
 import ScreenShieldKit
 
 let view = UIView(frame: .zero)
-view.hideFromCapture(hidden: true)
+view.hideFromCapture(hide: true)
 
-// Resture the behavior
-view.hideFromCapture(hidden: false)
+// Restore the behavior
+view.hideFromCapture(hide: false)
+```
+
+For SwiftUI on iOS 18, macOS 15, tvOS 18, watchOS 11, and visionOS 2 or newer:
+
+```swift
+import ScreenShieldKit
+import SwiftUI
+
+Text("Sensitive content")
+    .hideFromCapture()
+```
+
+## Example
+
+The SwiftUI example app is managed by Tuist:
+
+```sh
+cd Example
+tuist install
+tuist generate --no-open
 ```
 
 Detailed documentation for ScreenShieldKit can be found on the [Swift Package Index](https://swiftpackageindex.com/Kyle-Ye/ScreenShieldKit/main/documentation/screenshieldkit).
