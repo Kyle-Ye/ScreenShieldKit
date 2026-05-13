@@ -18,7 +18,7 @@ struct ContentView: View {
 
             Color.blue
                 .ignoresSafeArea()
-                .hideFromCapture(hide: hideProtectedContent)
+                .hiddenFromCapture(hideProtectedContent)
 
             VStack {
                 Spacer()
@@ -27,7 +27,7 @@ struct ContentView: View {
                     .labelsHidden()
                     .accessibilityIdentifier("capture-toggle")
                     .padding(24)
-                    .hideFromCapture()
+                    .hiddenFromCapture()
             }
         }
     }

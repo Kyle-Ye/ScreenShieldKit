@@ -30,8 +30,8 @@ extension CALayer {
     /// screen captures, and other screen sharing scenarios. When hidden, the layer's content will
     /// be replaced with a placeholder or appear blank in captures.
     ///
-    /// - Parameter hide: A boolean value that determines whether to hide the content from screen captures.
-    ///                   Set to `true` to hide content, `false` to show content. Defaults to `true`.
+    /// - Parameter hidden: A boolean value that determines whether to hide the content from screen captures.
+    ///                     Set to `true` to hide content, `false` to show content. Defaults to `true`.
     ///
     /// - Returns: A boolean value indicating whether the operation was successful.
     ///           Returns `true` if the visibility was successfully configured, `false` if there was an error.
@@ -39,7 +39,7 @@ extension CALayer {
     /// - Note: This method uses private iOS APIs and may need to be updated if the underlying implementation changes.
     ///
     @discardableResult
-    public func hideFromCapture(hide: Bool = true) -> Bool {
+    public func hiddenFromCapture(_ hidden: Bool = true) -> Bool {
         let propertyBase64 = "ZGlzYWJsZVVwZGF0ZU1hc2s=" /* "disableUpdateMask" encoded in base64 */
         guard let propertyData = Data(base64Encoded: propertyBase64),
               let propertyString = String(data: propertyData, encoding: .utf8) else {
@@ -50,13 +50,25 @@ extension CALayer {
             os_log(.error, log: logger, "CALayer does not response to selector %@", propertyString)
             return false
         }
-        if hide {
+        if hidden {
             let hideFlag = (1 << 1) | (1 << 4)
             setValue(NSNumber(value: hideFlag), forKey: propertyString)
         } else {
             setValue(NSNumber(value: 0), forKey: propertyString)
         }
         return true
+    }
+
+    /// Configures the layer's visibility in screen captures and recordings.
+    ///
+    /// - Parameter hide: A boolean value that determines whether to hide the content from screen captures.
+    /// - Returns: A boolean value indicating whether the operation was successful.
+    ///
+    /// - Deprecated: Use ``hiddenFromCapture(_:)`` instead.
+    @available(*, deprecated, renamed: "hiddenFromCapture(_:)")
+    @discardableResult
+    public func hideFromCapture(hide: Bool = true) -> Bool {
+        hiddenFromCapture(hide)
     }
 }
 #endif
@@ -69,8 +81,8 @@ extension UIView {
     /// screen captures, and other screen sharing scenarios. When hidden, the view's content will
     /// be replaced with a placeholder or appear blank in captures.
     ///
-    /// - Parameter hide: A boolean value that determines whether to hide the content from screen captures.
-    ///                   Set to `true` to hide content, `false` to show content. Defaults to `true`.
+    /// - Parameter hidden: A boolean value that determines whether to hide the content from screen captures.
+    ///                     Set to `true` to hide content, `false` to show content. Defaults to `true`.
     ///
     /// - Returns: A boolean value indicating whether the operation was successful.
     ///           Returns `true` if the visibility was successfully configured, `false` if there was an error.
@@ -78,8 +90,20 @@ extension UIView {
     /// - Note: This method uses private iOS APIs and may need to be updated if the underlying implementation changes.
     ///
     @discardableResult
+    public func hiddenFromCapture(_ hidden: Bool = true) -> Bool {
+        layer.hiddenFromCapture(hidden)
+    }
+
+    /// Configures the view's visibility in screen captures and recordings.
+    ///
+    /// - Parameter hide: A boolean value that determines whether to hide the content from screen captures.
+    /// - Returns: A boolean value indicating whether the operation was successful.
+    ///
+    /// - Deprecated: Use ``hiddenFromCapture(_:)`` instead.
+    @available(*, deprecated, renamed: "hiddenFromCapture(_:)")
+    @discardableResult
     public func hideFromCapture(hide: Bool = true) -> Bool {
-        layer.hideFromCapture(hide: hide)
+        hiddenFromCapture(hide)
     }
 }
 #endif
@@ -92,8 +116,8 @@ extension NSView {
     /// screen captures, and other screen sharing scenarios. When hidden, the view's content will
     /// be replaced with a placeholder or appear blank in captures.
     ///
-    /// - Parameter hide: A boolean value that determines whether to hide the content from screen captures.
-    ///                   Set to `true` to hide content, `false` to show content. Defaults to `true`.
+    /// - Parameter hidden: A boolean value that determines whether to hide the content from screen captures.
+    ///                     Set to `true` to hide content, `false` to show content. Defaults to `true`.
     ///
     /// - Returns: A boolean value indicating whether the operation was successful.
     ///           Returns `true` if the visibility was successfully configured, `false` if there was an error.
@@ -101,12 +125,24 @@ extension NSView {
     /// - Note: This method uses private macOS APIs and may need to be updated if the underlying implementation changes.
     ///
     @discardableResult
-    public func hideFromCapture(hide: Bool = true) -> Bool {
+    public func hiddenFromCapture(_ hidden: Bool = true) -> Bool {
         guard let layer else {
             os_log(.error, log: logger, "NSView is not backed by CALayer")
             return false
         }
-        return layer.hideFromCapture(hide: hide)
+        return layer.hiddenFromCapture(hidden)
+    }
+
+    /// Configures the view's visibility in screen captures and recordings.
+    ///
+    /// - Parameter hide: A boolean value that determines whether to hide the content from screen captures.
+    /// - Returns: A boolean value indicating whether the operation was successful.
+    ///
+    /// - Deprecated: Use ``hiddenFromCapture(_:)`` instead.
+    @available(*, deprecated, renamed: "hiddenFromCapture(_:)")
+    @discardableResult
+    public func hideFromCapture(hide: Bool = true) -> Bool {
+        hiddenFromCapture(hide)
     }
 }
 #endif

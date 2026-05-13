@@ -9,11 +9,11 @@ import UIKit
 import ScreenShieldKit
 
 class ViewController: UIViewController {
-    private lazy var hideFromCaptureSwitch: UISwitch = {
+    private lazy var captureToggle: UISwitch = {
         let switchView = UISwitch()
         switchView.center = self.view.center
         switchView.addTarget(self, action: #selector(toggleChanged(_:)), for: .valueChanged)
-        switchView.hideFromCapture()
+        switchView.hiddenFromCapture()
         return switchView
     }()
 
@@ -28,12 +28,12 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .red
         view.addSubview(blueColorView)
-        view.addSubview(hideFromCaptureSwitch)
+        view.addSubview(captureToggle)
     }
 
     @objc
     private func toggleChanged(_ sender: UISwitch) {
-        blueColorView.hideFromCapture(hide: sender.isOn)
+        blueColorView.hiddenFromCapture(sender.isOn)
     }
 
     override var prefersStatusBarHidden: Bool { true }
@@ -42,8 +42,8 @@ class ViewController: UIViewController {
 
     override func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         if motion == .motionShake {
-            hideFromCaptureSwitch.isOn.toggle()
-            hideFromCaptureSwitch.sendActions(for: .valueChanged)
+            captureToggle.isOn.toggle()
+            captureToggle.sendActions(for: .valueChanged)
         }
     }
 }

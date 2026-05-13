@@ -35,16 +35,16 @@ Then add the dependency to any targets you've declared in your manifest:
 
 Instead of wrapping your view in a secure UITextField or [ScreenShieldView](https://github.com/RyukieSama/Swifty),
 
-you can just directly call the `hideFromCapture(hide:)` API on your view or layer.
+you can just directly call the `hiddenFromCapture(_:)` API on your view or layer.
 
 ```swift
 import ScreenShieldKit
 
 let view = UIView(frame: .zero)
-view.hideFromCapture(hide: true)
+view.hiddenFromCapture(true)
 
 // Restore the behavior
-view.hideFromCapture(hide: false)
+view.hiddenFromCapture(false)
 ```
 
 For SwiftUI on iOS 18, macOS 15, tvOS 18, watchOS 11, and visionOS 2 or newer:
@@ -54,7 +54,7 @@ import ScreenShieldKit
 import SwiftUI
 
 Text("Sensitive content")
-    .hideFromCapture()
+    .hiddenFromCapture()
 ```
 
 ## Example

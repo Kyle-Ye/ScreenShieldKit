@@ -14,13 +14,13 @@ struct TestingHostTests {
     @Test
     func api() {
         let view = UIView()
-        #expect(view.hideFromCapture() == true)
-        #expect(view.hideFromCapture(hide: false) == true)
-        #expect(view.hideFromCapture(hide: true) == true)
+        #expect(view.hiddenFromCapture() == true)
+        #expect(view.hiddenFromCapture(false) == true)
+        #expect(view.hiddenFromCapture(true) == true)
 
         let layer = view.layer
-        #expect(layer.hideFromCapture() == true)
-        #expect(layer.hideFromCapture(hide: false) == true)
-        #expect(layer.hideFromCapture(hide: true) == true)
+        #expect(layer.hiddenFromCapture() == true)
+        #expect(layer.hiddenFromCapture(false) == true)
+        #expect(layer.hiddenFromCapture(true) == true)
     }
 }

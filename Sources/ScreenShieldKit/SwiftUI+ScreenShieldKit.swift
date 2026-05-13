@@ -16,19 +16,19 @@ extension RedactionReasons {
 
 @available(iOS 18.0, macOS 15.0, tvOS 18.0, watchOS 11.0, visionOS 2.0, *)
 private struct ScreenCaptureRedactionModifier: ViewModifier {
-    var hide: Bool
+    var hidden: Bool
 
     func body(content: Content) -> some View {
         content.transformEnvironment(\.redactionReasons) { reasons in
-            reasons.updateScreencaptureProhibition(hide)
+            reasons.updateScreencaptureProhibition(hidden)
         }
     }
 }
 
 @available(iOS 18.0, macOS 15.0, tvOS 18.0, watchOS 11.0, visionOS 2.0, *)
 extension RedactionReasons {
-    fileprivate mutating func updateScreencaptureProhibition(_ hide: Bool) {
-        if hide {
+    fileprivate mutating func updateScreencaptureProhibition(_ hidden: Bool) {
+        if hidden {
             insert(.screencaptureProhibited)
         } else {
             remove(.screencaptureProhibited)
@@ -44,11 +44,11 @@ extension View {
     /// the view environment. Passing `false` removes only that capture-protection reason and preserves
     /// any other active redaction reasons from ancestors.
     ///
-    /// - Parameter hide: A Boolean value that controls whether the view is hidden from capture.
+    /// - Parameter hidden: A Boolean value that controls whether the view is hidden from capture.
     ///   The default value is `true`.
     /// - Returns: A view with screen-capture visibility configured.
-    public func hideFromCapture(hide: Bool = true) -> some View {
-        modifier(ScreenCaptureRedactionModifier(hide: hide))
+    public func hiddenFromCapture(_ hidden: Bool = true) -> some View {
+        modifier(ScreenCaptureRedactionModifier(hidden: hidden))
     }
 }
 #endif

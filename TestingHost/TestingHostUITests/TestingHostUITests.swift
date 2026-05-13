@@ -21,7 +21,7 @@ final class TestingHostUITests: FBSnapshotTestCase {
 //        let view = UIView(frame: .init(origin: .zero, size: .init(width: 10, height: 10)))
 //        view.backgroundColor = .red
 //        FBSnapshotVerifyView(view, identifier: "Red")
-//        view.hideFromCapture(hide: true)
+//        view.hiddenFromCapture(true)
 //        FBSnapshotVerifyView(view, identifier: "Hide")
 //        
 //    }
@@ -32,7 +32,7 @@ final class TestingHostUITests: FBSnapshotTestCase {
 //        view.backgroundColor = .red
 //        let layer = view.layer
 //        FBSnapshotVerifyLayer(layer, identifier: "Red")
-//        layer.hideFromCapture(hide: true)
+//        layer.hiddenFromCapture(true)
 //        FBSnapshotVerifyLayer(layer, identifier: "Hide")
 //    }
 
