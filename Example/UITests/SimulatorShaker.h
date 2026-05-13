@@ -1,6 +1,6 @@
 //
 //  SimulatorShaker.h
-//  TestingHostUITests
+//  UIKitExampleUITests
 //
 //  Created by Kyle on 2025/2/18.
 //

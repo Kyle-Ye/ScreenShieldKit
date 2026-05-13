@@ -1,6 +1,6 @@
 //
-//  TestingHostTests.swift
-//  TestingHostTests
+//  UIKitExampleTests.swift
+//  UIKitExampleTests
 //
 //  Created by Kyle on 2025/2/17.
 //
@@ -10,7 +10,7 @@ import ScreenShieldKit
 import UIKit
 
 @MainActor
-struct TestingHostTests {
+struct UIKitExampleTests {
     @Test
     func api() {
         let view = UIView()

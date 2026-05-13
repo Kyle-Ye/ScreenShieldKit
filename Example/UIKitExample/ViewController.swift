@@ -1,17 +1,16 @@
 //
 //  ViewController.swift
-//  TestingHost
+//  UIKitExample
 //
 //  Created by Kyle on 2025/2/17.
 //
 
-import UIKit
 import ScreenShieldKit
+import UIKit
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
     private lazy var captureToggle: UISwitch = {
         let switchView = UISwitch()
-        switchView.center = self.view.center
         switchView.addTarget(self, action: #selector(toggleChanged(_:)), for: .valueChanged)
         switchView.hiddenFromCapture()
         return switchView
@@ -20,7 +19,6 @@ class ViewController: UIViewController {
     private lazy var blueColorView: UIView = {
         let view = UIView()
         view.backgroundColor = .blue
-        view.frame = self.view.bounds
         return view
     }()
 
@@ -29,6 +27,12 @@ class ViewController: UIViewController {
         view.backgroundColor = .red
         view.addSubview(blueColorView)
         view.addSubview(captureToggle)
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        blueColorView.frame = view.bounds
+        captureToggle.center = view.center
     }
 
     @objc

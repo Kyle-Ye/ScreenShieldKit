@@ -57,15 +57,23 @@ Text("Sensitive content")
     .hiddenFromCapture()
 ```
 
-## Example
+## Examples
 
-The SwiftUI example app is managed by Tuist:
+The example apps are managed by Tuist:
 
 ```sh
 cd Example
-tuist install
-tuist generate --no-open
+mise trust --yes
+mise install
+mise exec -- tuist install
+mise exec -- tuist generate --no-open
 ```
+
+Available schemes:
+
+- `UIKitExample`: UIKit demo and the target app for UI tests.
+- `AppKitExample`: macOS AppKit demo.
+- `SwiftUIExample`: SwiftUI demo for iOS and macOS.
 
 Detailed documentation for ScreenShieldKit can be found on the [Swift Package Index](https://swiftpackageindex.com/Kyle-Ye/ScreenShieldKit/main/documentation/screenshieldkit).
 

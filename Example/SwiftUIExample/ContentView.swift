@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  ScreenShieldKitExample
+//  SwiftUIExample
 //
 //  Created by Kyle on 2026/05/12.
 //
@@ -30,5 +30,8 @@ struct ContentView: View {
                     .hiddenFromCapture()
             }
         }
+        #if os(iOS)
+        .persistentSystemOverlays(.hidden)
+        #endif
     }
 }
