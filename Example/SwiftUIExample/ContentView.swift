@@ -9,29 +9,14 @@ import ScreenShieldKit
 import SwiftUI
 
 struct ContentView: View {
-    @State private var hideProtectedContent = false
-
     var body: some View {
         ZStack {
             Color.red
                 .ignoresSafeArea()
-
             Color.blue
                 .ignoresSafeArea()
-                .hiddenFromCapture(hideProtectedContent)
-
-            VStack {
-                Spacer()
-
-                Toggle("Hide from capture", isOn: $hideProtectedContent)
-                    .labelsHidden()
-                    .accessibilityIdentifier("capture-toggle")
-                    .padding(24)
-                    .hiddenFromCapture()
-            }
+                .hiddenFromCapture(true)
         }
-        #if os(iOS)
         .persistentSystemOverlays(.hidden)
-        #endif
     }
 }

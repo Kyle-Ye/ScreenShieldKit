@@ -17,21 +17,19 @@ extension RedactionReasons {
 @available(iOS 18.0, macOS 15.0, tvOS 18.0, watchOS 11.0, visionOS 2.0, *)
 private struct ScreenCaptureRedactionModifier: ViewModifier {
     var hidden: Bool
-
+    
     func body(content: Content) -> some View {
-        content.transformEnvironment(\.redactionReasons) { reasons in
-            reasons.updateScreencaptureProhibition(hidden)
-        }
-    }
-}
-
-@available(iOS 18.0, macOS 15.0, tvOS 18.0, watchOS 11.0, visionOS 2.0, *)
-extension RedactionReasons {
-    fileprivate mutating func updateScreencaptureProhibition(_ hidden: Bool) {
         if hidden {
-            insert(.screencaptureProhibited)
+            content
+                .privacySensitive(false)
+                .transformEnvironment(\.redactionReasons) { reasons in
+                    reasons.insert(.screencaptureProhibited)
+                }
         } else {
-            remove(.screencaptureProhibited)
+            content
+                .transformEnvironment(\.redactionReasons) { reasons in
+                    reasons.remove(.screencaptureProhibited)
+                }
         }
     }
 }
