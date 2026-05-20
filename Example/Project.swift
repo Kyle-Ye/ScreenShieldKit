@@ -98,7 +98,11 @@ let project = Project(
             product: .uiTests,
             bundleId: "\(bundleIdPrefix).uikit-example.uitests",
             deploymentTargets: .iOS("18.0"),
-            sources: ["UITests/**"],
+            sources: [
+                "UITests/UIKitExampleUITests.swift",
+                "UITests/ScreenshotAssertions.swift",
+                "UITests/SimulatorShaker.m",
+            ],
             dependencies: [
                 .target(name: "UIKitExample"),
                 .package(product: "ScreenShieldKit"),
@@ -136,6 +140,22 @@ let project = Project(
             ],
             settings: .settings(base: baseSettings)
         ),
+        .target(
+            name: "SwiftUIExampleUITests",
+            destinations: [.iPhone, .iPad],
+            product: .uiTests,
+            bundleId: "\(bundleIdPrefix).swiftui-example.uitests",
+            deploymentTargets: .iOS("18.0"),
+            sources: [
+                "UITests/SwiftUIExampleUITests.swift",
+                "UITests/ScreenshotAssertions.swift",
+            ],
+            dependencies: [
+                .target(name: "SwiftUIExample"),
+                .package(product: "ScreenShieldKit"),
+            ],
+            settings: .settings(base: baseSettings)
+        ),
     ],
     schemes: [
         .scheme(
@@ -163,6 +183,10 @@ let project = Project(
             shared: true,
             buildAction: .buildAction(targets: [
                 "SwiftUIExample",
+                "SwiftUIExampleUITests",
+            ]),
+            testAction: .targets([
+                "SwiftUIExampleUITests",
             ])
         ),
     ]
