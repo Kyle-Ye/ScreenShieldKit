@@ -19,7 +19,6 @@ final class UIKitExampleUITests: XCTestCase {
     func testHostAppScreenshot() throws {
         let app = XCUIApplication()
         app.launch()
-        sleep(5) // Sleep some time to wait for the home indicator to be hidden when screenshot is taken
 
         func assertScreenshot(color: UIColor) {
             let image = XCUIScreen.main.screenshot().image
@@ -41,11 +40,9 @@ final class UIKitExampleUITests: XCTestCase {
 
         let toggle = app.switches.element
         toggle.tap()
-        sleep(5) // Sleep some time to wait for the home indicator to be hidden when screenshot is taken
         assertScreenshot(color: .red)
 
         toggle.tap()
-        sleep(5) // Sleep some time to wait for the home indicator to be hidden when screenshot is taken
         assertScreenshot(color: .blue)
     }
 }

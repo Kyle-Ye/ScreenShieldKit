@@ -29,6 +29,12 @@ final class ViewController: UIViewController {
         view.addSubview(captureToggle)
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        setNeedsUpdateOfHomeIndicatorAutoHidden()
+        setNeedsUpdateOfScreenEdgesDeferringSystemGestures()
+    }
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         blueColorView.frame = view.bounds
@@ -43,6 +49,8 @@ final class ViewController: UIViewController {
     override var prefersStatusBarHidden: Bool { true }
 
     override var prefersHomeIndicatorAutoHidden: Bool { true }
+
+    override var preferredScreenEdgesDeferringSystemGestures: UIRectEdge { .all }
 
     override func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         if motion == .motionShake {
