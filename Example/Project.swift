@@ -41,6 +41,8 @@ let swiftUIInfoPlist: [String: Plist.Value] = [
         "UISceneConfigurations": [:],
     ],
     "UILaunchScreen": [:],
+    "UIStatusBarHidden": true,
+    "UIViewControllerBasedStatusBarAppearance": false,
 ]
 
 let uikitInfoPlist: [String: Plist.Value] = [
@@ -170,6 +172,22 @@ let project = Project(
             ],
             settings: .settings(base: baseSettings)
         ),
+        .target(
+            name: "OpenSwiftUIExampleUITests",
+            destinations: [.iPhone, .iPad],
+            product: .uiTests,
+            bundleId: "\(bundleIdPrefix).openswiftui-example.uitests",
+            deploymentTargets: .iOS("18.0"),
+            sources: [
+                "UITests/OpenSwiftUIExampleUITests.swift",
+                "UITests/ScreenshotAssertions.swift",
+            ],
+            dependencies: [
+                .target(name: "OpenSwiftUIExample"),
+                .external(name: "ScreenShieldKit"),
+            ],
+            settings: .settings(base: baseSettings)
+        ),
     ],
     schemes: [
         .scheme(
@@ -208,6 +226,10 @@ let project = Project(
             shared: true,
             buildAction: .buildAction(targets: [
                 "OpenSwiftUIExample",
+                "OpenSwiftUIExampleUITests",
+            ]),
+            testAction: .targets([
+                "OpenSwiftUIExampleUITests",
             ])
         ),
     ]

@@ -6,8 +6,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/OpenSwiftUIProject/OpenSwiftUI-spm.git",
       "state" : {
-        "revision" : "b33cac52a830b666aa768528125f41003dcd377b",
-        "version" : "0.18.0"
+        "revision" : "b682ea9224081f2b4f92e12371741a57475e0cc0",
+        "version" : "0.18.1"
       }
     }
   ],

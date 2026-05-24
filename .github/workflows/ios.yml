@@ -55,7 +55,7 @@ jobs:
 
           while IFS= read -r destination; do
             [ -z "$destination" ] && continue
-            for scheme in UIKitExample SwiftUIExample; do
+            for scheme in UIKitExample SwiftUIExample OpenSwiftUIExample; do
               echo "Testing $scheme on $destination"
               xcodebuild test \
                 -workspace ScreenShieldKitExamples.xcworkspace \
