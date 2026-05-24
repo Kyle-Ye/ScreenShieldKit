@@ -15,19 +15,18 @@ jobs:
     strategy:
       matrix:
         config:
-          # - name: 'iOS 16.4 and 17.2 with Xcode 15.2 on macOS 13'
-          #   runs-on: macos-13
-          #   xcode: '15.2'
-          #   xcode_name: 'Xcode_15.2.app'
-          #   destinations: |
-          #     platform=iOS Simulator,name=iPhone 14 Pro,OS=16.4
-          #     platform=iOS Simulator,name=iPhone 15 Pro,OS=17.2
-          - name: 'Xcode 16.2 on macOS 15'
+          - name: 'Xcode 16.4 on macOS 15'
             runs-on: macos-15
-            xcode: '16.2'
-            xcode_name: 'Xcode_16.2.app'
+            xcode: '16.4'
+            xcode_name: 'Xcode_16.4.app'
             destinations: |
-              platform=iOS Simulator,name=iPhone 16 Pro,OS=18.1
+              platform=iOS Simulator,name=iPhone 16 Pro,OS=18.5
+          - name: 'Xcode 26.3 on macOS 26'
+            runs-on: macos-26
+            xcode: '26.3'
+            xcode_name: 'Xcode_26.3.app'
+            destinations: |
+              platform=iOS Simulator,name=iPhone 17 Pro,OS=26.2
     steps:
       - uses: actions/checkout@v4
       - name: Select Xcode
@@ -50,7 +49,7 @@ jobs:
           xcrun simctl list devices
           sudo xcodebuild -runFirstLaunch
           sudo xcodebuild -sdk iphonesimulator -version
-          sudo installer -pkg /Applications/Xcode.app/Contents/Resources/Packages/XcodeSystemResources.pkg -target /
+          sudo installer -pkg /Applications/${{ matrix.config.xcode_name }}/Contents/Resources/Packages/XcodeSystemResources.pkg -target /
           mise exec -- tuist install
           mise exec -- tuist generate --no-open
 
