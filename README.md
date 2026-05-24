@@ -19,7 +19,7 @@ A Swift framework to hide UIView/NSView/CALayer, and SwiftUI views on iOS 18 and
 In your `Package.swift` file, add the following dependency to your `dependencies` argument:
 
 ```swift
-.package(url: "https://github.com/Kyle-Ye/ScreenShieldKit.git", from: "0.1.0"),
+.package(url: "https://github.com/Kyle-Ye/ScreenShieldKit.git", from: "0.2.0"),
 ```
 
 Then add the dependency to any targets you've declared in your manifest:
