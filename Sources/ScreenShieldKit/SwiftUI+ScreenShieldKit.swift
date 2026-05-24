@@ -17,7 +17,7 @@ extension RedactionReasons {
 @available(iOS 18.0, macOS 15.0, tvOS 18.0, watchOS 11.0, visionOS 2.0, *)
 private struct ScreenCaptureRedactionModifier: ViewModifier {
     var hidden: Bool
-    
+
     func body(content: Content) -> some View {
         if hidden {
             content
