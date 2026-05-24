@@ -54,9 +54,11 @@ jobs:
 
           while IFS= read -r destination; do
             [ -z "$destination" ] && continue
-            echo "Testing on $destination"
-            xcodebuild test \
-              -workspace ScreenShieldKitExamples.xcworkspace \
-              -scheme 'UIKitExample' \
-              -destination "$destination"
+            for scheme in UIKitExample SwiftUIExample; do
+              echo "Testing $scheme on $destination"
+              xcodebuild test \
+                -workspace ScreenShieldKitExamples.xcworkspace \
+                -scheme "$scheme" \
+                -destination "$destination"
+            done
           done <<< "${{ matrix.config.destinations }}"
