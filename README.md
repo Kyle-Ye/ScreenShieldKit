@@ -6,9 +6,11 @@ A Swift framework to hide UIView/NSView/CALayer, and SwiftUI views on iOS 18 and
 
 ## Overview
 
-| **Workflow** | **Status** |
-|-|:-|
-| **iOS UI Tests** | [![iOS UI Tests](https://github.com/Kyle-Ye/ScreenShieldKit/actions/workflows/ios.yml/badge.svg)](https://github.com/Kyle-Ye/ScreenShieldKit/actions/workflows/ios.yml) |
+| **Example** | **Workflow** | **Status** |
+|-|-|:-|
+| UIKit | [`example_uikit.yml`](.github/workflows/example_uikit.yml) | [![UIKit Example Tests](https://github.com/Kyle-Ye/ScreenShieldKit/actions/workflows/example_uikit.yml/badge.svg)](https://github.com/Kyle-Ye/ScreenShieldKit/actions/workflows/example_uikit.yml) |
+| SwiftUI | [`example_swiftui.yml`](.github/workflows/example_swiftui.yml) | [![SwiftUI Example Tests](https://github.com/Kyle-Ye/ScreenShieldKit/actions/workflows/example_swiftui.yml/badge.svg)](https://github.com/Kyle-Ye/ScreenShieldKit/actions/workflows/example_swiftui.yml) |
+| OpenSwiftUI | [`example_openswiftui.yml`](.github/workflows/example_openswiftui.yml) | [![OpenSwiftUI Example Tests](https://github.com/Kyle-Ye/ScreenShieldKit/actions/workflows/example_openswiftui.yml/badge.svg)](https://github.com/Kyle-Ye/ScreenShieldKit/actions/workflows/example_openswiftui.yml) |
 
 ![Demo](Resources/preview.png)
 
@@ -17,7 +19,7 @@ A Swift framework to hide UIView/NSView/CALayer, and SwiftUI views on iOS 18 and
 In your `Package.swift` file, add the following dependency to your `dependencies` argument:
 
 ```swift
-.package(url: "https://github.com/Kyle-Ye/ScreenShieldKit.git", from: "0.1.0"),
+.package(url: "https://github.com/Kyle-Ye/ScreenShieldKit.git", from: "0.2.0"),
 ```
 
 Then add the dependency to any targets you've declared in your manifest:
@@ -58,7 +60,7 @@ Text("Sensitive content")
 ```
 
 For OpenSwiftUI, enable the package trait. The dependency uses the
-OpenSwiftUI-spm binary package from version 0.18.0.
+OpenSwiftUI-spm binary package from version 0.18.1.
 
 ```sh
 swift build --traits OpenSwiftUI
@@ -93,6 +95,7 @@ Available schemes:
 - `UIKitExample`: UIKit demo and the target app for UI tests.
 - `AppKitExample`: macOS AppKit demo.
 - `SwiftUIExample`: SwiftUI demo for iOS and macOS.
+- `OpenSwiftUIExample`: OpenSwiftUI demo for iOS and macOS.
 
 Detailed documentation for ScreenShieldKit can be found on the [Swift Package Index](https://swiftpackageindex.com/Kyle-Ye/ScreenShieldKit/main/documentation/screenshieldkit).
 

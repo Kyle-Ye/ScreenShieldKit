@@ -1,0 +1,34 @@
+name: OpenSwiftUI Example Tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    name: ${{ matrix.config.name }}
+    strategy:
+      matrix:
+        config:
+          - name: 'iOS / Xcode 16.4 on macOS 15'
+            platform: ios
+            runs_on: macos-15
+            xcode_version: '16.4'
+            xcode_name: 'Xcode_16.4.app'
+            destination: 'platform=iOS Simulator,name=iPhone 16 Pro,OS=18.5'
+          - name: 'iOS / Xcode 26.3 on macOS 26'
+            platform: ios
+            runs_on: macos-26
+            xcode_version: '26.3'
+            xcode_name: 'Xcode_26.3.app'
+            destination: 'platform=iOS Simulator,name=iPhone 17 Pro,OS=26.2'
+    uses: ./.github/workflows/example.yml
+    with:
+      scheme: OpenSwiftUIExample
+      platform: ${{ matrix.config.platform }}
+      runs-on: ${{ matrix.config.runs_on }}
+      xcode-version: ${{ matrix.config.xcode_version }}
+      xcode-name: ${{ matrix.config.xcode_name }}
+      destination: ${{ matrix.config.destination }}
