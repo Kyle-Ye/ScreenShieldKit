@@ -57,6 +57,25 @@ Text("Sensitive content")
     .hiddenFromCapture()
 ```
 
+For OpenSwiftUI, enable the package trait. The dependency uses the
+OpenSwiftUI-spm binary package from version 0.18.0.
+
+```sh
+swift build --traits OpenSwiftUI
+```
+
+```swift
+import OpenSwiftUI
+import ScreenShieldKit
+
+Text("Sensitive content")
+    .hiddenFromCapture()
+```
+
+AppKit support is best-effort. The current implementation uses the same private
+layer update mask path as UIKit, but that has been observed not to hide `NSView`
+contents from macOS system captures reliably.
+
 ## Examples
 
 The example apps are managed by Tuist:
