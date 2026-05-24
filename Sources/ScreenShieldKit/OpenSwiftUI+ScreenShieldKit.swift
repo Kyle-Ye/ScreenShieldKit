@@ -9,27 +9,26 @@
 import OpenSwiftUI
 
 @available(iOS 18.0, macOS 15.0, tvOS 18.0, watchOS 11.0, visionOS 2.0, *)
-private extension RedactionReasons {
-    static let screenShieldScreencaptureProhibited: RedactionReasons = .init(rawValue: 1 << 3)
+extension RedactionReasons {
+    @_spi(Private)
+    public static let screencaptureProhibited: RedactionReasons = .init(rawValue: 1 << 3)
 }
 
 @available(iOS 18.0, macOS 15.0, tvOS 18.0, watchOS 11.0, visionOS 2.0, *)
-private struct OpenSwiftUIScreenCaptureRedactionModifier: ViewModifier {
+private struct ScreenCaptureRedactionModifier: ViewModifier {
     var hidden: Bool
 
     func body(content: Content) -> some View {
         if hidden {
             content
-                // OpenSwiftUI 0.18.0 only forwards the capture-hiding display
-                // property through the privacy-sensitive renderer effect path.
-                .privacySensitive(true)
+                .privacySensitive(false)
                 .transformEnvironment(\.redactionReasons) { reasons in
-                    reasons.insert(.screenShieldScreencaptureProhibited)
+                    reasons.insert(.screencaptureProhibited)
                 }
         } else {
             content
                 .transformEnvironment(\.redactionReasons) { reasons in
-                    reasons.remove(.screenShieldScreencaptureProhibited)
+                    reasons.remove(.screencaptureProhibited)
                 }
         }
     }
@@ -37,15 +36,17 @@ private struct OpenSwiftUIScreenCaptureRedactionModifier: ViewModifier {
 
 @available(iOS 18.0, macOS 15.0, tvOS 18.0, watchOS 11.0, visionOS 2.0, *)
 extension View {
-    /// Prevents this OpenSwiftUI view from appearing in screenshots, screen recordings, and other system captures.
+    /// Prevents this view from appearing in screenshots, screen recordings, and other system captures.
     ///
-    /// Build ScreenShieldKit with the `OpenSwiftUI` package trait to enable this extension.
+    /// ScreenShieldKit implements this by adding SwiftUI's private screen-capture redaction reason to
+    /// the view environment. Passing `false` removes only that capture-protection reason and preserves
+    /// any other active redaction reasons from ancestors.
     ///
     /// - Parameter hidden: A Boolean value that controls whether the view is hidden from capture.
     ///   The default value is `true`.
     /// - Returns: A view with screen-capture visibility configured.
     public func hiddenFromCapture(_ hidden: Bool = true) -> some View {
-        modifier(OpenSwiftUIScreenCaptureRedactionModifier(hidden: hidden))
+        modifier(ScreenCaptureRedactionModifier(hidden: hidden))
     }
 }
 #endif

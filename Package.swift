@@ -23,7 +23,7 @@ let package = Package(
     dependencies: [
         .package(
             url: "https://github.com/OpenSwiftUIProject/OpenSwiftUI-spm.git",
-            from: "0.18.0"
+            from: "0.18.0",
         ),
     ],
     targets: [
