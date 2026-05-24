@@ -1,0 +1,46 @@
+name: Example Tests
+
+on:
+  workflow_call:
+    inputs:
+      scheme:
+        description: 'The Xcode scheme to test.'
+        required: true
+        type: string
+      platform:
+        description: 'The platform to test, such as ios or macos.'
+        required: true
+        type: string
+      runs-on:
+        description: 'The GitHub-hosted runner label.'
+        required: true
+        type: string
+      xcode-version:
+        description: 'The Xcode version to select.'
+        required: true
+        type: string
+      xcode-name:
+        description: 'The Xcode app bundle name under /Applications.'
+        required: true
+        type: string
+      destination:
+        description: 'The xcodebuild destination value.'
+        required: true
+        type: string
+
+jobs:
+  test:
+    name: ${{ inputs.scheme }} / ${{ inputs.platform }} / Xcode ${{ inputs.xcode-version }}
+    runs-on: ${{ inputs.runs-on }}
+    env:
+      GITHUB_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run example tests
+        uses: ./.github/actions/example
+        with:
+          scheme: ${{ inputs.scheme }}
+          platform: ${{ inputs.platform }}
+          xcode-version: ${{ inputs.xcode-version }}
+          xcode-name: ${{ inputs.xcode-name }}
+          destination: ${{ inputs.destination }}

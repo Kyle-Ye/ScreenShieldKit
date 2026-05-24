@@ -1,0 +1,89 @@
+name: Run Example Tests
+description: Set up the example project and run an Xcode scheme on the requested platform.
+
+inputs:
+  scheme:
+    description: The Xcode scheme to test.
+    required: true
+  platform:
+    description: The platform to test, such as ios or macos.
+    required: true
+  xcode-version:
+    description: The Xcode version to select with setup-xcode.
+    required: true
+  xcode-name:
+    description: The Xcode app bundle name under /Applications.
+    required: true
+  destination:
+    description: The xcodebuild destination value.
+    required: true
+  example-directory:
+    description: Path to the Tuist example project directory.
+    required: false
+    default: Example
+
+runs:
+  using: composite
+  steps:
+    - name: Select Xcode
+      uses: maxim-lobanov/setup-xcode@v1
+      with:
+        xcode-version: ${{ inputs.xcode-version }}
+
+    - name: Install mise
+      shell: bash
+      run: |
+        curl https://mise.run | sh
+        echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+
+    - name: Install tools
+      shell: bash
+      working-directory: ${{ inputs.example-directory }}
+      run: |
+        mise trust --yes
+        mise install
+
+    - name: Prepare platform
+      shell: bash
+      run: |
+        set -euo pipefail
+
+        sudo xcode-select -s "/Applications/${{ inputs.xcode-name }}/Contents/Developer"
+
+        case "${{ inputs.platform }}" in
+          ios)
+            xcrun simctl list devices
+            sudo xcodebuild -runFirstLaunch
+            sudo xcodebuild -sdk iphonesimulator -version
+            xcode_system_resources="/Applications/${{ inputs.xcode-name }}/Contents/Resources/Packages/XcodeSystemResources.pkg"
+            if [[ -f "$xcode_system_resources" ]]; then
+              sudo installer -pkg "$xcode_system_resources" -target /
+            fi
+            ;;
+          macos)
+            xcodebuild -version
+            ;;
+          *)
+            echo "::error::Unsupported example test platform: ${{ inputs.platform }}"
+            exit 1
+            ;;
+        esac
+
+    - name: Generate example project
+      shell: bash
+      working-directory: ${{ inputs.example-directory }}
+      run: |
+        mise exec -- tuist install
+        mise exec -- tuist generate --no-open
+
+    - name: Run example tests
+      shell: bash
+      working-directory: ${{ inputs.example-directory }}
+      run: |
+        set -euo pipefail
+
+        echo "Testing ${{ inputs.scheme }} on ${{ inputs.destination }}"
+        xcodebuild test \
+          -workspace ScreenShieldKitExamples.xcworkspace \
+          -scheme "${{ inputs.scheme }}" \
+          -destination "${{ inputs.destination }}"
