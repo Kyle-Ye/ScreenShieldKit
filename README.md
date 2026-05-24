@@ -100,6 +100,7 @@ Detailed documentation for ScreenShieldKit can be found on the [Swift Package In
 
 See LICENSE file - MIT
 
-## Credits
+## Acknowledgements
 
-https://nsantoine.dev/posts/CALayerCaptureHiding
+- [@NSAntoine](https://github.com/NSAntoine) for the CALayer capture hiding write-up: https://nsantoine.dev/posts/CALayerCaptureHiding
+- [@Kyle-Ye](https://github.com/Kyle-Ye) for the SwiftUI capture hiding notes: https://kyleye.top/posts/swiftui-hidden-from-capture

@@ -4,7 +4,6 @@
 //
 //  Copyright (c) 2025-2026 Kyle-Ye
 //  SPDX-License-Identifier: MIT
-//  Credit: https://nsantoine.dev/posts/CALayerCaptureHiding
 
 import Foundation
 import os.log
