@@ -62,9 +62,6 @@ let uikitInfoPlist: [String: Plist.Value] = [
 
 let project = Project(
     name: "ScreenShieldKitExamples",
-    packages: [
-        .package(path: ".."),
-    ],
     targets: [
         .target(
             name: "UIKitExample",
@@ -75,7 +72,7 @@ let project = Project(
             infoPlist: .extendingDefault(with: uikitInfoPlist),
             sources: ["UIKitExample/**"],
             dependencies: [
-                .package(product: "ScreenShieldKit"),
+                .external(name: "ScreenShieldKit"),
             ],
             settings: .settings(base: baseSettings)
         ),
@@ -88,7 +85,7 @@ let project = Project(
             sources: ["Tests/**"],
             dependencies: [
                 .target(name: "UIKitExample"),
-                .package(product: "ScreenShieldKit"),
+                .external(name: "ScreenShieldKit"),
             ],
             settings: .settings(base: baseSettings)
         ),
@@ -105,7 +102,7 @@ let project = Project(
             ],
             dependencies: [
                 .target(name: "UIKitExample"),
-                .package(product: "ScreenShieldKit"),
+                .external(name: "ScreenShieldKit"),
             ],
             settings: .settings(base: baseSettings.merging([
                 "SWIFT_OBJC_BRIDGING_HEADER": "UITests/UIKitExampleUITests-Bridging-Header.h",
@@ -120,7 +117,7 @@ let project = Project(
             infoPlist: .dictionary(appKitInfoPlist),
             sources: ["AppKitExample/**"],
             dependencies: [
-                .package(product: "ScreenShieldKit"),
+                .external(name: "ScreenShieldKit"),
             ],
             settings: .settings(base: baseSettings)
         ),
@@ -136,7 +133,7 @@ let project = Project(
             infoPlist: .dictionary(swiftUIInfoPlist),
             sources: ["SwiftUIExample/**"],
             dependencies: [
-                .package(product: "ScreenShieldKit"),
+                .external(name: "ScreenShieldKit"),
             ],
             settings: .settings(base: baseSettings)
         ),
@@ -152,7 +149,24 @@ let project = Project(
             ],
             dependencies: [
                 .target(name: "SwiftUIExample"),
-                .package(product: "ScreenShieldKit"),
+                .external(name: "ScreenShieldKit"),
+            ],
+            settings: .settings(base: baseSettings)
+        ),
+        .target(
+            name: "OpenSwiftUIExample",
+            destinations: [.iPhone, .iPad, .mac],
+            product: .app,
+            bundleId: "\(bundleIdPrefix).openswiftui-example",
+            deploymentTargets: .multiplatform(
+                iOS: "18.0",
+                macOS: "15.0"
+            ),
+            infoPlist: .dictionary(swiftUIInfoPlist),
+            sources: ["OpenSwiftUIExample/**"],
+            dependencies: [
+                .external(name: "OpenSwiftUI"),
+                .external(name: "ScreenShieldKit"),
             ],
             settings: .settings(base: baseSettings)
         ),
@@ -187,6 +201,13 @@ let project = Project(
             ]),
             testAction: .targets([
                 "SwiftUIExampleUITests",
+            ])
+        ),
+        .scheme(
+            name: "OpenSwiftUIExample",
+            shared: true,
+            buildAction: .buildAction(targets: [
+                "OpenSwiftUIExample",
             ])
         ),
     ]
