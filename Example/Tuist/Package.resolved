@@ -1,0 +1,15 @@
+{
+  "originHash" : "701508ffcb3f7857d75806993fd1b6f47576cd5a40ab62bad795775510ec5573",
+  "pins" : [
+    {
+      "identity" : "openswiftui-spm",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/OpenSwiftUIProject/OpenSwiftUI-spm.git",
+      "state" : {
+        "revision" : "b33cac52a830b666aa768528125f41003dcd377b",
+        "version" : "0.18.0"
+      }
+    }
+  ],
+  "version" : 3
+}
