@@ -2,8 +2,8 @@
 //  AppKit+ScreenShieldKit.swift
 //  ScreenShieldKit
 //
-//  Created by Kyle on 2026/05/24.
-//
+//  Copyright (c) 2025-2026 Kyle-Ye
+//  SPDX-License-Identifier: MIT
 
 #if canImport(AppKit) && !targetEnvironment(macCatalyst)
 import AppKit
