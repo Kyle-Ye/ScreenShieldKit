@@ -3,8 +3,18 @@ name: Package Tests
 on:
   push:
     branches: [ main ]
+    paths:
+      - 'Sources/**'
+      - 'Tests/**'
+      - 'Package.swift'
+      - '.github/workflows/package.yml'
   pull_request:
     branches: [ main ]
+    paths:
+      - 'Sources/**'
+      - 'Tests/**'
+      - 'Package.swift'
+      - '.github/workflows/package.yml'
 
 jobs:
   test:

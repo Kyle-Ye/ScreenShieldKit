@@ -3,12 +3,45 @@ name: UIKit Example Tests
 on:
   push:
     branches: [ main ]
+    paths:
+      - 'Sources/**'
+      - 'Example/UIKitExample/**'
+      - 'Example/Tests/**'
+      - 'Example/UITests/UIKitExampleUITests.swift'
+      - 'Example/UITests/UIKitExampleUITests-Bridging-Header.h'
+      - 'Example/UITests/ScreenshotAssertions.swift'
+      - 'Example/UITests/SimulatorShaker.h'
+      - 'Example/UITests/SimulatorShaker.m'
+      - 'Example/Project.swift'
+      - 'Example/Tuist.swift'
+      - 'Example/Tuist/**'
+      - 'Example/mise.toml'
+      - '.github/actions/example/action.yml'
+      - '.github/workflows/example_uikit.yml'
   pull_request:
     branches: [ main ]
+    paths:
+      - 'Sources/**'
+      - 'Example/UIKitExample/**'
+      - 'Example/Tests/**'
+      - 'Example/UITests/UIKitExampleUITests.swift'
+      - 'Example/UITests/UIKitExampleUITests-Bridging-Header.h'
+      - 'Example/UITests/ScreenshotAssertions.swift'
+      - 'Example/UITests/SimulatorShaker.h'
+      - 'Example/UITests/SimulatorShaker.m'
+      - 'Example/Project.swift'
+      - 'Example/Tuist.swift'
+      - 'Example/Tuist/**'
+      - 'Example/mise.toml'
+      - '.github/actions/example/action.yml'
+      - '.github/workflows/example_uikit.yml'
 
 jobs:
   test:
     name: iOS ${{ matrix.runtime.ios_version }} / Xcode ${{ matrix.runtime.xcode_version }} / ${{ matrix.runtime.runs_on }}
+    runs-on: ${{ matrix.runtime.runs_on }}
+    env:
+      GITHUB_TOKEN: ${{ github.token }}
     strategy:
       fail-fast: false
       matrix:
@@ -23,12 +56,14 @@ jobs:
             runs_on: macos-26
             xcode_version: '26.3'
             xcode_name: 'Xcode_26.3.app'
-    uses: ./.github/workflows/example.yml
-    with:
-      scheme: UIKitExample
-      platform: ios
-      runs-on: ${{ matrix.runtime.runs_on }}
-      xcode-version: ${{ matrix.runtime.xcode_version }}
-      xcode-name: ${{ matrix.runtime.xcode_name }}
-      destination: 'platform=iOS Simulator,name=${{ matrix.runtime.device }},OS=${{ matrix.runtime.ios_version }}'
-      runtime-name: 'iOS ${{ matrix.runtime.ios_version }}'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run example tests
+        uses: ./.github/actions/example
+        with:
+          scheme: UIKitExample
+          platform: ios
+          xcode-version: ${{ matrix.runtime.xcode_version }}
+          xcode-name: ${{ matrix.runtime.xcode_name }}
+          destination: 'platform=iOS Simulator,name=${{ matrix.runtime.device }},OS=${{ matrix.runtime.ios_version }}'
