@@ -37,5 +37,16 @@ let package = Package(
                 ),
             ]
         ),
+        .testTarget(
+            name: "ScreenShieldKitTests",
+            dependencies: [
+                "ScreenShieldKit",
+                .product(
+                    name: "OpenSwiftUI",
+                    package: "OpenSwiftUI-spm",
+                    condition: .when(traits: ["OpenSwiftUI"])
+                ),
+            ]
+        ),
     ]
 )

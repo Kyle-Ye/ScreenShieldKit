@@ -6,11 +6,12 @@ A Swift framework to hide UIView/NSView/CALayer, and SwiftUI views on iOS 18 and
 
 ## Overview
 
-| **Example** | **Workflow** | **Status** |
-|-|-|:-|
-| UIKit | [`example_uikit.yml`](.github/workflows/example_uikit.yml) | [![UIKit Example Tests](https://github.com/Kyle-Ye/ScreenShieldKit/actions/workflows/example_uikit.yml/badge.svg)](https://github.com/Kyle-Ye/ScreenShieldKit/actions/workflows/example_uikit.yml) |
-| SwiftUI | [`example_swiftui.yml`](.github/workflows/example_swiftui.yml) | [![SwiftUI Example Tests](https://github.com/Kyle-Ye/ScreenShieldKit/actions/workflows/example_swiftui.yml/badge.svg)](https://github.com/Kyle-Ye/ScreenShieldKit/actions/workflows/example_swiftui.yml) |
-| OpenSwiftUI | [`example_openswiftui.yml`](.github/workflows/example_openswiftui.yml) | [![OpenSwiftUI Example Tests](https://github.com/Kyle-Ye/ScreenShieldKit/actions/workflows/example_openswiftui.yml/badge.svg)](https://github.com/Kyle-Ye/ScreenShieldKit/actions/workflows/example_openswiftui.yml) |
+| **Coverage** | **Workflow** | **Matrix** | **Status** |
+|-|-|-|:-|
+| Package public API | [`package.yml`](.github/workflows/package.yml) | iOS 18.5/Xcode 16.4 and iOS 26.2/Xcode 26.3 | [![Package Tests](https://github.com/Kyle-Ye/ScreenShieldKit/actions/workflows/package.yml/badge.svg)](https://github.com/Kyle-Ye/ScreenShieldKit/actions/workflows/package.yml) |
+| UIKit example UI tests | [`example_uikit.yml`](.github/workflows/example_uikit.yml) | iOS 18.5 on Xcode 16.4 and iOS 26.2 on Xcode 26.3 | [![UIKit Example Tests](https://github.com/Kyle-Ye/ScreenShieldKit/actions/workflows/example_uikit.yml/badge.svg)](https://github.com/Kyle-Ye/ScreenShieldKit/actions/workflows/example_uikit.yml) |
+| SwiftUI example UI tests | [`example_swiftui.yml`](.github/workflows/example_swiftui.yml) | iOS 18.5 on Xcode 16.4 and iOS 26.2 on Xcode 26.3 | [![SwiftUI Example Tests](https://github.com/Kyle-Ye/ScreenShieldKit/actions/workflows/example_swiftui.yml/badge.svg)](https://github.com/Kyle-Ye/ScreenShieldKit/actions/workflows/example_swiftui.yml) |
+| OpenSwiftUI example UI tests | [`example_openswiftui.yml`](.github/workflows/example_openswiftui.yml) | iOS 18.5 on Xcode 16.4 and iOS 26.2 on Xcode 26.3 | [![OpenSwiftUI Example Tests](https://github.com/Kyle-Ye/ScreenShieldKit/actions/workflows/example_openswiftui.yml/badge.svg)](https://github.com/Kyle-Ye/ScreenShieldKit/actions/workflows/example_openswiftui.yml) |
 
 ![Demo](Resources/preview.png)
 
