@@ -1,6 +1,20 @@
 // swift-tools-version: 6.1
 
+import Foundation
 import PackageDescription
+
+let useSPIInterfaces = Context.environment["SCREENSHIELDKIT_USE_SPI_INTERFACES"].map {
+    let enabled = $0 == "1"
+    print("SCREENSHIELDKIT_USE_SPI_INTERFACES=\($0) -> \(enabled)")
+    return enabled
+} ?? false
+let packageDirectory = URL(fileURLWithPath: #filePath).deletingLastPathComponent().path
+let spiInterfaceSettings: [SwiftSetting] = useSPIInterfaces ? [
+    .unsafeFlags([
+        "-I", "\(packageDirectory)/Interfaces",
+        "-D", "SCREENSHIELDKIT_USE_SPI_INTERFACES",
+    ]),
+] : []
 
 let package = Package(
     name: "ScreenShieldKit",
@@ -35,7 +49,8 @@ let package = Package(
                     package: "OpenSwiftUI-spm",
                     condition: .when(traits: ["OpenSwiftUI"])
                 ),
-            ]
+            ],
+            swiftSettings: spiInterfaceSettings
         ),
         .testTarget(
             name: "ScreenShieldKitTests",
@@ -46,7 +61,8 @@ let package = Package(
                     package: "OpenSwiftUI-spm",
                     condition: .when(traits: ["OpenSwiftUI"])
                 ),
-            ]
+            ],
+            swiftSettings: spiInterfaceSettings
         ),
     ]
 )

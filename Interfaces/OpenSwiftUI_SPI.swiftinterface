@@ -1,0 +1,12 @@
+// swift-interface-format-version: 1.0
+// swift-module-flags: -enable-objc-interop -enable-library-evolution -swift-version 5 -module-name OpenSwiftUI_SPI -module-abi-name OpenSwiftUICore
+import Swift
+@_exported import OpenSwiftUI
+
+@available(iOS 18.0, macOS 15.0, tvOS 18.0, watchOS 11.0, visionOS 2.0, *)
+extension OpenSwiftUICore.RedactionReasons {
+    public static var screencaptureProhibited: OpenSwiftUICore.RedactionReasons {
+        @_silgen_name("$s15OpenSwiftUICore16RedactionReasonsV23screencaptureProhibitedACvgZ")
+        get
+    }
+}
