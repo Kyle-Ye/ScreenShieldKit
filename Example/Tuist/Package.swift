@@ -3,10 +3,15 @@
 import PackageDescription
 
 #if TUIST
-import struct ProjectDescription.PackageSettings
-import struct ProjectDescription.Settings
+import ProjectDescription
 
 let packageSettings = PackageSettings(
+    productTypes: [
+        "LookInsideServer": .framework,
+    ],
+    productDestinations: [
+        "LookInsideServer": [.iPhone, .iPad, .mac],
+    ],
     targetSettings: [
         "ScreenShieldKit": Settings.settings(base: [
             // TODO: Xcode does not support enable trait yet
@@ -16,7 +21,7 @@ let packageSettings = PackageSettings(
 )
 #endif
 
-let package = Package(
+let package = PackageDescription.Package(
     name: "ScreenShieldKitExamplesDependencies",
     dependencies: [
         .package(
@@ -25,5 +30,6 @@ let package = Package(
                 .trait(name: "OpenSwiftUI"),
             ]
         ),
+        .package(url: "https://github.com/LookInsideApp/LookInside-Release.git", from: "0.2.2"),
     ]
 )

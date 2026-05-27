@@ -1,6 +1,15 @@
 {
-  "originHash" : "701508ffcb3f7857d75806993fd1b6f47576cd5a40ab62bad795775510ec5573",
+  "originHash" : "21a481b647218c4a8b7b1fe593232909a0f0a8a0eb07e8ed2a6d991517db7ea6",
   "pins" : [
+    {
+      "identity" : "lookinside-release",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/LookInsideApp/LookInside-Release.git",
+      "state" : {
+        "revision" : "7514cfa8bd24a78f74d8b982c429e7d61ef58134",
+        "version" : "0.2.2"
+      }
+    },
     {
       "identity" : "openswiftui-spm",
       "kind" : "remoteSourceControl",
