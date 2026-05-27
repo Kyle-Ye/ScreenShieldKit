@@ -1,4 +1,4 @@
-name: Package Tests
+name: Package Interface Tests
 
 on:
   push:
@@ -6,35 +6,39 @@ on:
     paths:
       - 'Sources/**'
       - 'Tests/**'
+      - 'Interfaces/**'
       - 'Package.swift'
       - '.github/actions/example/action.yml'
       - '.github/actions/package/action.yml'
-      - '.github/workflows/package.yml'
+      - '.github/workflows/package_interface.yml'
   pull_request:
     branches: [ main ]
     paths:
       - 'Sources/**'
       - 'Tests/**'
+      - 'Interfaces/**'
       - 'Package.swift'
       - '.github/actions/example/action.yml'
       - '.github/actions/package/action.yml'
-      - '.github/workflows/package.yml'
+      - '.github/workflows/package_interface.yml'
 
 jobs:
   test:
     name: ${{ matrix.config.name }}
     runs-on: ${{ matrix.config.runs_on }}
+    env:
+      SCREENSHIELDKIT_USE_SPI_INTERFACES: '1'
     strategy:
       fail-fast: false
       matrix:
         config:
-          - name: 'SwiftPM / Xcode 16.4 on macOS 15'
+          - name: 'SwiftPM SPI Interfaces / Xcode 16.4 on macOS 15'
             runs_on: macos-15
             xcode_version: '16.4'
             xcode_name: 'Xcode_16.4.app'
             ios_version: '18.5'
             device: 'iPhone 16 Pro'
-          - name: 'SwiftPM / Xcode 26.3 on macOS 26'
+          - name: 'SwiftPM SPI Interfaces / Xcode 26.3 on macOS 26'
             runs_on: macos-26
             xcode_version: '26.3'
             xcode_name: 'Xcode_26.3.app'
