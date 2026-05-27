@@ -24,22 +24,21 @@ on:
 
 jobs:
   test:
-    name: ${{ matrix.config.name }}
-    runs-on: ${{ matrix.config.runs_on }}
+    name: xcodebuild / iOS ${{ matrix.runtime.ios_version }} / Xcode ${{ matrix.runtime.xcode_version }} / ${{ matrix.runtime.runs_on }}
+    runs-on: ${{ matrix.runtime.runs_on }}
     env:
+      GITHUB_TOKEN: ${{ github.token }}
       SCREENSHIELDKIT_USE_SPI_INTERFACES: '1'
     strategy:
       fail-fast: false
       matrix:
-        config:
-          - name: 'SwiftPM SPI Interfaces / Xcode 16.4 on macOS 15'
-            runs_on: macos-15
+        runtime:
+          - runs_on: macos-15
             xcode_version: '16.4'
             xcode_name: 'Xcode_16.4.app'
             ios_version: '18.5'
             device: 'iPhone 16 Pro'
-          - name: 'SwiftPM SPI Interfaces / Xcode 26.3 on macOS 26'
-            runs_on: macos-26
+          - runs_on: macos-26
             xcode_version: '26.3'
             xcode_name: 'Xcode_26.3.app'
             ios_version: '26.2'
@@ -50,6 +49,6 @@ jobs:
       - name: Run package tests
         uses: ./.github/actions/package
         with:
-          xcode-version: ${{ matrix.config.xcode_version }}
-          xcode-name: ${{ matrix.config.xcode_name }}
-          destination: 'platform=iOS Simulator,name=${{ matrix.config.device }},OS=${{ matrix.config.ios_version }}'
+          xcode-version: ${{ matrix.runtime.xcode_version }}
+          xcode-name: ${{ matrix.runtime.xcode_name }}
+          destination: 'platform=iOS Simulator,name=${{ matrix.runtime.device }},OS=${{ matrix.runtime.ios_version }}'
