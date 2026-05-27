@@ -29,17 +29,19 @@ struct ContentView: View {
     }
 }
 
-#if os(iOS) || os(tvOS) || os(visionOS)
+#if canImport(UIKit)
+import UIKit
 typealias PlatformColor = UIColor
-#elseif os(macOS)
+#elseif canImport(AppKit)
+import AppKit
 typealias PlatformColor = NSColor
 #endif
 
 private extension Color {
     init(platformColor: PlatformColor) {
-        #if os(iOS) || os(tvOS) || os(visionOS)
+        #if canImport(UIKit)
         self.init(uiColor: platformColor)
-        #elseif os(macOS)
+        #elseif canImport(AppKit)
         self.init(nsColor: platformColor)
         #endif
     }
