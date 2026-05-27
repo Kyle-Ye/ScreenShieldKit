@@ -5,7 +5,7 @@
 //  Copyright (c) 2025-2026 Kyle-Ye
 //  SPDX-License-Identifier: MIT
 
-#if OPENSWIFTUI && canImport(OpenSwiftUI)
+#if OpenSwiftUI && canImport(OpenSwiftUI)
 import OpenSwiftUI
 
 @available(iOS 18.0, macOS 15.0, tvOS 18.0, watchOS 11.0, visionOS 2.0, *)

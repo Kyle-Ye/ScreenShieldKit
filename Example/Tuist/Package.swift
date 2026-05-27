@@ -9,7 +9,8 @@ import struct ProjectDescription.Settings
 let packageSettings = PackageSettings(
     targetSettings: [
         "ScreenShieldKit": Settings.settings(base: [
-            "SWIFT_ACTIVE_COMPILATION_CONDITIONS": "$(inherited) OPENSWIFTUI",
+            // TODO: Xcode does not support enable trait yet
+            "SWIFT_ACTIVE_COMPILATION_CONDITIONS": "$(inherited) OpenSwiftUI",
         ]),
     ]
 )

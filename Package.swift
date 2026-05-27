@@ -35,9 +35,6 @@ let package = Package(
                     package: "OpenSwiftUI-spm",
                     condition: .when(traits: ["OpenSwiftUI"])
                 ),
-            ],
-            swiftSettings: [
-                .define("OPENSWIFTUI", .when(traits: ["OpenSwiftUI"])),
             ]
         ),
     ]
