@@ -1,4 +1,4 @@
-name: Package Tests
+name: Package Interface Tests
 
 on:
   push:
@@ -6,19 +6,21 @@ on:
     paths:
       - 'Sources/**'
       - 'Tests/**'
+      - 'Interfaces/**'
       - 'Package.swift'
       - '.github/actions/example/action.yml'
       - '.github/actions/package/action.yml'
-      - '.github/workflows/package.yml'
+      - '.github/workflows/package_interface.yml'
   pull_request:
     branches: [ main ]
     paths:
       - 'Sources/**'
       - 'Tests/**'
+      - 'Interfaces/**'
       - 'Package.swift'
       - '.github/actions/example/action.yml'
       - '.github/actions/package/action.yml'
-      - '.github/workflows/package.yml'
+      - '.github/workflows/package_interface.yml'
 
 jobs:
   test:
@@ -26,6 +28,7 @@ jobs:
     runs-on: ${{ matrix.runtime.runs_on }}
     env:
       GITHUB_TOKEN: ${{ github.token }}
+      SCREENSHIELDKIT_USE_SPI_INTERFACES: '1'
     strategy:
       fail-fast: false
       matrix:

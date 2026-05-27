@@ -6,6 +6,10 @@
 //  SPDX-License-Identifier: MIT
 
 #if OpenSwiftUI && canImport(OpenSwiftUI)
+
+#if SCREENSHIELDKIT_USE_SPI_INTERFACES
+import OpenSwiftUI_SPI
+#else
 import OpenSwiftUI
 
 @available(iOS 18.0, macOS 15.0, tvOS 18.0, watchOS 11.0, visionOS 2.0, *)
@@ -13,6 +17,7 @@ extension RedactionReasons {
     @_spi(Private)
     public static let screencaptureProhibited: RedactionReasons = .init(rawValue: 1 << 3)
 }
+#endif
 
 @available(iOS 18.0, macOS 15.0, tvOS 18.0, watchOS 11.0, visionOS 2.0, *)
 private struct ScreenCaptureRedactionModifier: ViewModifier {

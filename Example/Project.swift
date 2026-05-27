@@ -1,11 +1,16 @@
+import Foundation
 import ProjectDescription
 
 let bundleIdPrefix = "top.kyleye.screenshieldkit"
 
+let packageDirectory = URL(fileURLWithPath: #filePath).deletingLastPathComponent().deletingLastPathComponent().path
+let spiInterfaceSettings: SettingsDictionary = [
+    "OTHER_SWIFT_FLAGS": "$(inherited) -I \(packageDirectory)/Interfaces",
+]
 let baseSettings: SettingsDictionary = [
     "CODE_SIGN_STYLE": "Automatic",
     "DEVELOPMENT_TEAM": "VB7MJ8R223",
-]
+].merging(spiInterfaceSettings)
 
 let lookInsideServerDependencies: [TargetDependency] = [
     .external(name: "LookInsideServer", condition: .when([.ios, .macos])),

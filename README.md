@@ -9,6 +9,7 @@ A Swift framework to hide UIView/NSView/CALayer, and SwiftUI views on iOS 18 and
 | **Coverage** | **Workflow** | **Matrix** | **Status** |
 |-|-|-|:-|
 | Package public API | [`package.yml`](.github/workflows/package.yml) | iOS 18.5 with Xcode 16.4 & iOS 26.2 with Xcode 26.3 | [![Package Tests](https://github.com/Kyle-Ye/ScreenShieldKit/actions/workflows/package.yml/badge.svg)](https://github.com/Kyle-Ye/ScreenShieldKit/actions/workflows/package.yml) |
+| Package public API with SPI interfaces | [`package_interface.yml`](.github/workflows/package_interface.yml) | iOS 18.5 with Xcode 16.4 & iOS 26.2 with Xcode 26.3 | [![Package Interface Tests](https://github.com/Kyle-Ye/ScreenShieldKit/actions/workflows/package_interface.yml/badge.svg)](https://github.com/Kyle-Ye/ScreenShieldKit/actions/workflows/package_interface.yml) |
 | UIKit example UI tests | [`example_uikit.yml`](.github/workflows/example_uikit.yml) | iOS 18.5 with Xcode 16.4 & iOS 26.2 with Xcode 26.3 | [![UIKit Example Tests](https://github.com/Kyle-Ye/ScreenShieldKit/actions/workflows/example_uikit.yml/badge.svg)](https://github.com/Kyle-Ye/ScreenShieldKit/actions/workflows/example_uikit.yml) |
 | SwiftUI example UI tests | [`example_swiftui.yml`](.github/workflows/example_swiftui.yml) | iOS 18.5 with Xcode 16.4 & iOS 26.2 with Xcode 26.3 | [![SwiftUI Example Tests](https://github.com/Kyle-Ye/ScreenShieldKit/actions/workflows/example_swiftui.yml/badge.svg)](https://github.com/Kyle-Ye/ScreenShieldKit/actions/workflows/example_swiftui.yml) |
 | OpenSwiftUI example UI tests | [`example_openswiftui.yml`](.github/workflows/example_openswiftui.yml) | iOS 18.5 with Xcode 16.4 & iOS 26.2 with Xcode 26.3 | [![OpenSwiftUI Example Tests](https://github.com/Kyle-Ye/ScreenShieldKit/actions/workflows/example_openswiftui.yml/badge.svg)](https://github.com/Kyle-Ye/ScreenShieldKit/actions/workflows/example_openswiftui.yml) |
@@ -40,6 +41,8 @@ Instead of wrapping your view in a secure UITextField or [ScreenShieldView](http
 
 you can just directly call the `hiddenFromCapture(_:)` API on your view or layer.
 
+### UIKit
+
 ```swift
 import ScreenShieldKit
 
@@ -50,6 +53,8 @@ view.hiddenFromCapture(true)
 view.hiddenFromCapture(false)
 ```
 
+### SwiftUI
+
 For SwiftUI on iOS 18, macOS 15, tvOS 18, watchOS 11, and visionOS 2 or newer:
 
 ```swift
@@ -59,6 +64,8 @@ import SwiftUI
 Text("Sensitive content")
     .hiddenFromCapture()
 ```
+
+### OpenSwiftUI
 
 For OpenSwiftUI, enable the package trait. The dependency uses the
 OpenSwiftUI-spm binary package from version 0.18.1.
@@ -75,9 +82,21 @@ Text("Sensitive content")
     .hiddenFromCapture()
 ```
 
+### AppKit
+
 AppKit support is best-effort. The current implementation uses the same private
 layer update mask path as UIKit, but that has been observed not to hide `NSView`
 contents from macOS system captures reliably.
+
+## SPI Interfaces
+
+To build against the local SPI interface shims instead of ScreenShieldKit's
+fallback declarations, set `SCREENSHIELDKIT_USE_SPI_INTERFACES=1` before
+building.
+
+```sh
+SCREENSHIELDKIT_USE_SPI_INTERFACES=1 swift build
+```
 
 ## Examples
 
