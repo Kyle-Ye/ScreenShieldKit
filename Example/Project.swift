@@ -7,6 +7,24 @@ let baseSettings: SettingsDictionary = [
     "DEVELOPMENT_TEAM": "VB7MJ8R223",
 ]
 
+let lookInsideServerDependencies: [TargetDependency] = [
+    .external(name: "LookInsideServer", condition: .when([.ios, .macos])),
+]
+
+let lookInsideServerReleaseExclusionSettings: SettingsDictionary = [
+    "EXCLUDED_SOURCE_FILE_NAMES": "$(inherited) LookInsideServer*",
+]
+
+func appSettings(base: SettingsDictionary = baseSettings) -> Settings {
+    .settings(
+        base: base,
+        configurations: [
+            .debug(name: "Debug"),
+            .release(name: "Release", settings: lookInsideServerReleaseExclusionSettings),
+        ]
+    )
+}
+
 let appInfoPlist: [String: Plist.Value] = [
     "CFBundleDevelopmentRegion": "$(DEVELOPMENT_LANGUAGE)",
     "CFBundleExecutable": "$(EXECUTABLE_NAME)",
@@ -75,8 +93,8 @@ let project = Project(
             sources: ["UIKitExample/**"],
             dependencies: [
                 .external(name: "ScreenShieldKit"),
-            ],
-            settings: .settings(base: baseSettings)
+            ] + lookInsideServerDependencies,
+            settings: appSettings()
         ),
         .target(
             name: "UIKitExampleTests",
@@ -135,8 +153,8 @@ let project = Project(
             sources: ["AppKitExample/**"],
             dependencies: [
                 .external(name: "ScreenShieldKit"),
-            ],
-            settings: .settings(base: baseSettings)
+            ] + lookInsideServerDependencies,
+            settings: appSettings()
         ),
         .target(
             name: "SwiftUIExample",
@@ -151,8 +169,8 @@ let project = Project(
             sources: ["SwiftUIExample/**"],
             dependencies: [
                 .external(name: "ScreenShieldKit"),
-            ],
-            settings: .settings(base: baseSettings)
+            ] + lookInsideServerDependencies,
+            settings: appSettings()
         ),
         .target(
             name: "SwiftUIExampleUITests",
@@ -184,8 +202,8 @@ let project = Project(
             dependencies: [
                 .external(name: "OpenSwiftUI"),
                 .external(name: "ScreenShieldKit"),
-            ],
-            settings: .settings(base: baseSettings)
+            ] + lookInsideServerDependencies,
+            settings: appSettings()
         ),
         .target(
             name: "OpenSwiftUIExampleUITests",
