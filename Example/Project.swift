@@ -92,6 +92,21 @@ let project = Project(
             settings: .settings(base: baseSettings)
         ),
         .target(
+            name: "ScreenShieldKitPackageTests",
+            destinations: [.iPhone, .iPad],
+            product: .unitTests,
+            bundleId: "\(bundleIdPrefix).package.tests",
+            deploymentTargets: .iOS("18.0"),
+            sources: ["../Tests/ScreenShieldKitTests/**"],
+            dependencies: [
+                .external(name: "OpenSwiftUI"),
+                .external(name: "ScreenShieldKit"),
+            ],
+            settings: .settings(base: baseSettings.merging([
+                "SWIFT_ACTIVE_COMPILATION_CONDITIONS": "$(inherited) OpenSwiftUI",
+            ]))
+        ),
+        .target(
             name: "UIKitExampleUITests",
             destinations: [.iPhone, .iPad],
             product: .uiTests,
@@ -201,6 +216,16 @@ let project = Project(
             testAction: .targets([
                 "UIKitExampleTests",
                 "UIKitExampleUITests",
+            ])
+        ),
+        .scheme(
+            name: "ScreenShieldKitPackageTests",
+            shared: true,
+            buildAction: .buildAction(targets: [
+                "ScreenShieldKitPackageTests",
+            ]),
+            testAction: .targets([
+                "ScreenShieldKitPackageTests",
             ])
         ),
         .scheme(
