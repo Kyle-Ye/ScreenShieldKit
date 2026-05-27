@@ -27,10 +27,14 @@ on:
         description: 'The xcodebuild destination value.'
         required: true
         type: string
+      runtime-name:
+        description: 'The tested runtime label shown in the Actions job name.'
+        required: true
+        type: string
 
 jobs:
   test:
-    name: ${{ inputs.scheme }} / ${{ inputs.platform }} / Xcode ${{ inputs.xcode-version }}
+    name: ${{ inputs.scheme }} / ${{ inputs.runtime-name }} / Xcode ${{ inputs.xcode-version }}
     runs-on: ${{ inputs.runs-on }}
     env:
       GITHUB_TOKEN: ${{ github.token }}
