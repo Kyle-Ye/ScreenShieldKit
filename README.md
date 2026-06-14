@@ -117,7 +117,7 @@ Available schemes:
 - `SwiftUIExample`: SwiftUI demo for iOS and macOS.
 - `OpenSwiftUIExample`: OpenSwiftUI demo for iOS and macOS.
 
-Detailed documentation for ScreenShieldKit can be found on the [Swift Package Index](https://swiftpackageindex.com/Kyle-Ye/ScreenShieldKit/main/documentation/screenshieldkit).
+Detailed documentation for ScreenShieldKit can be found on [GitHub Pages](https://kyle-ye.github.io/ScreenShieldKit/documentation/screenshieldkit/).
 
 ## License
 

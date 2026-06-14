@@ -1,4 +1,4 @@
 version: 1
-builder:
-  configs:
-    - documentation_targets: [ScreenShieldKit]
+external_links:
+  # See https://github.com/SwiftPackageIndex/SwiftPackageIndex-Server/issues/4068
+  documentation: "https://kyle-ye.github.io/ScreenShieldKit/documentation/screenshieldkit/"
