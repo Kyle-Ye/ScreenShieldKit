@@ -5,6 +5,7 @@ on:
     branches: [ main ]
     paths:
       - 'Sources/**/*.swift'
+      - 'Sources/**/*.docc/**'
   workflow_dispatch:
 
 permissions:
