@@ -2,11 +2,15 @@
 
 Hide a SwiftUI view from screenshots and screen recordings while leaving the rest of the interface visible.
 
+@Metadata {
+    @PageImage(source: "lock", alt: "Lock icon.", purpose: icon)
+}
+
 ## Overview
 
 Use ``SwiftUICore/View/hiddenFromCapture(_:)`` when sensitive information is composed in SwiftUI. The modifier applies capture protection to the view branch where it appears, so you can protect only the parts of the UI that contain secrets.
 
-This tutorial starts with a simple one-time-code view, makes capture protection conditional, and then shows how to restore normal capture behavior.
+This guide starts with a simple one-time-code view, makes capture protection conditional, and then shows how to restore normal capture behavior.
 
 ## Add ScreenShieldKit to the View
 

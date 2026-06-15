@@ -28,3 +28,12 @@ For UIKit views, call ``UIKit/UIView/hiddenFromCapture(_:)`` on the view you wan
 ### Layers
 
 - ``QuartzCore/CALayer/hiddenFromCapture(_:)``
+
+### Extended Modules
+
+- ``QuartzCore``
+- ``UIKit``
+
+### Credits
+
+- <doc:Acknowledgements>

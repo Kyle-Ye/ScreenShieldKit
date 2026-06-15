@@ -2,6 +2,10 @@
 
 Apply capture protection at the boundary that owns the sensitive content.
 
+@Metadata {
+    @PageImage(source: "lock", alt: "Lock icon.", purpose: icon)
+}
+
 ## Overview
 
 ScreenShieldKit exposes the same capture-hiding intent across UIKit views, SwiftUI views, and Core Animation layers. Each API accepts a Boolean value so you can enable protection when sensitive content is visible and disable it when the content becomes safe to capture again.
