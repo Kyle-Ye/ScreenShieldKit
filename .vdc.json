@@ -1,0 +1,51 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenSwiftUIProject/VersionedDocC/0.0.7/Schema/VersionedDocC.schema.json",
+  "schemaVersion": 1,
+  "projectName": "ScreenShieldKit",
+  "moduleName": "ScreenShieldKit",
+  "modulePath": "screenshieldkit",
+  "targetName": "ScreenShieldKit",
+  "catalogPath": "Sources/ScreenShieldKit/ScreenShieldKit.docc",
+  "hostingBasePath": "/ScreenShieldKit",
+  "defaultVersion": "main",
+  "releasePolicy": {
+    "latest": 2,
+    "development": {
+      "name": "main",
+      "ref": "HEAD"
+    }
+  },
+  "sourceRepository": "https://github.com/Kyle-Ye/ScreenShieldKit",
+  "historicalCatalogFallback": "current",
+  "ociCache": {
+    "repository": "ghcr.io/kyle-ye/screenshieldkit-docc-cache"
+  },
+  "allowedModules": [
+    "ScreenShieldKit",
+    "UIKit",
+    "AppKit",
+    "QuartzCore",
+    "SwiftUICore"
+  ],
+  "symbolGraph": {
+    "minimumAccessLevel": "public",
+    "skipProtocolImplementations": true,
+    "emitExtensionBlocks": true,
+    "defaultPlatform": "iOS",
+    "platforms": [
+      {
+        "name": "iOS",
+        "triple": "arm64-apple-ios",
+        "sdk": "iphoneos"
+      },
+      {
+        "name": "macOS",
+        "triple": "arm64-apple-macosx",
+        "sdk": "macosx"
+      }
+    ]
+  },
+  "apiChanges": {
+    "pageSize": 10
+  }
+}
